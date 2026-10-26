@@ -8,6 +8,9 @@ Dark navy/cyan design by default, with a light-mode toggle.
 See **[docs/PUBLISH.md](docs/PUBLISH.md)** for the copy-ready steps to push this
 folder to GitHub and deploy it on Vercel.
 
+For regular changes, see **[docs/MAINTENANCE.md](docs/MAINTENANCE.md)** for where
+to edit text, replace or add photos, add projects, and update certificates.
+
 ## Add a course or certificate
 
 Edit `content/education.ts`: add bootcamps and courses to `nonFormalEducation`,
