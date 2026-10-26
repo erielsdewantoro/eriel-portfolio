@@ -21,6 +21,10 @@ export const experience: ExperienceEntry[] = [
         src: "/images/experience/tennis-circle.jpeg",
         alt: "Tennis Circle Jakarta members posing together on a tennis court at sunset",
       },
+      {
+    src: "/images/experience/tennis-circle2.jpeg",
+    alt: "Brand partner event organized with Tennis Circle",
+      },
     ],
     bullets: [
       "Coordinated weekly, multi-court training for a community of about 300 members, including registration, scheduling, communication, and follow-up.",
