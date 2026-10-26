@@ -71,7 +71,7 @@ export const certifications: Credential[] = [
     title: "PCAP: Programming Essentials in Python",
     issuer: "Cisco Networking Academy / OpenEDG Python Institute",
     period: "2023",
-    image: :"/images/certs/Python-Certif.png",
+    image: "/images/certs/Python-Certif.png",
     href: "https://drive.google.com/file/d/1yVxrD0uXBarrYqw5f62uflIYzkn3QA2O/view?usp=drive_link",
   },
   {
