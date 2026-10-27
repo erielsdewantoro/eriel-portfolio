@@ -2,7 +2,7 @@ export const site = {
   name: "Eriel Setiawan Dewantoro",
   profileImage: "/images/profile/eriel.jpeg",
   profileAlt: "Portrait of Eriel Setiawan Dewantoro in a dark suit and navy tie",
-  eyebrow: "Universitas BSI Graduate · GPA 3.70/4.00",
+  eyebrow: "Universitas Bina Sarana Informatika Graduate · GPA 3.70/4.00",
   positioning:
     "Information Technology Graduate · Data & Business Analytics · Operations & IT Support",
   supportingStatement:

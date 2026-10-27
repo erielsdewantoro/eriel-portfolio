@@ -63,6 +63,7 @@ export const certifications: Credential[] = [
     title: "Program Analyst (Analis Program)",
     issuer: "BNSP",
     period: "2025",
+    detail: "Sertifikasi kompetensi nasional BNSP sebagai Analis Program",
     image: "/images/certs/bnsp.png",
     imageAlt: "Program Analyst competency certificate from BNSP",
     href: "https://drive.google.com/file/d/1jIOBTDiYn-KFhZrSDzvzTv3MiovIHAP-/view?usp=drive_link",
@@ -77,6 +78,7 @@ export const certifications: Credential[] = [
   {
     title: "Fundamental Database MySQL",
     issuer: "Coding Studio",
+    detail: "Sertifikat penyelesaian kursus Fundamental Database MySQL",
     period: "2024",
     image: "/images/certs/mysql.png",
     imageAlt: "Fundamental Database MySQL certificate from Coding Studio",

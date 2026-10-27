@@ -27,7 +27,7 @@ export const experience: ExperienceEntry[] = [
       },
     ],
     bullets: [
-      "Coordinated weekly, multi-court training for a community of about 300 members, including registration, scheduling, communication, and follow-up.",
+      "Coordinated weekly, multi-court training for a community of about 150 members, including registration, scheduling, communication, and follow-up.",
       "Organized inter-club tournaments, sparring sessions, and brand-hosted events from preparation through event day, coordinating players, partners, guests, and on-court support.",
       "Worked with Dunlop, Wardah, and La Roche-Posay on partner and brand events, including parallel classes and courts organized by skill level.",
     ],
