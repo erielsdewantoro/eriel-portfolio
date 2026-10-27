@@ -2,6 +2,8 @@ import Image from "next/image";
 import { experience } from "@/content/experience";
 import { existingAssetOrUndefined } from "@/lib/assets";
 import { Reveal } from "@/components/ui/Reveal";
+import { ExperienceGallery } from "@/components/home/ExperienceGallery";
+import { Button } from "@/components/ui/Button";
 
 export function ExperienceSection() {
   return (
@@ -28,6 +30,16 @@ export function ExperienceSection() {
                       ))}
                     </ul>
 
+                    {entry.links?.length ? (
+                      <div className="mt-5 flex flex-wrap gap-3">
+                        {entry.links.map((link) => (
+                          <Button key={link.href} href={link.href} variant="outline" external>
+                            {link.label}
+                          </Button>
+                        ))}
+                      </div>
+                    ) : null}
+
                     {entry.highlight && (
                       <div className="mt-6 rounded-[var(--radius-sm)] border-l-[3px] border-[var(--color-accent)] bg-[var(--color-info-bg)] p-4">
                         <p className="eyebrow mb-1.5 text-[var(--color-accent)]">{entry.highlight.label}</p>
@@ -52,22 +64,7 @@ export function ExperienceSection() {
                     </div>
                   )}
                   {images.length > 1 && (
-                    <div className="grid grid-cols-2 content-center gap-3 bg-[var(--color-surface-subtle)] p-4 md:w-[40%] md:shrink-0">
-                      {images.map((image) => (
-                        <figure
-                          key={image.src}
-                          className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-sm)] border border-[var(--color-border)] bg-[var(--color-bg)]"
-                        >
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            fill
-                            sizes="(min-width: 768px) 200px, 45vw"
-                            className="object-contain p-1.5"
-                          />
-                        </figure>
-                      ))}
-                    </div>
+                    <ExperienceGallery images={images} />
                   )}
                 </article>
               </Reveal>

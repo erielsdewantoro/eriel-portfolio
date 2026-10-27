@@ -154,10 +154,13 @@ images: [
 
 Pastikan ketiga file benar-benar diletakkan di
 `public/images/experience/`. Di halaman, satu gambar ditampilkan sebagai satu
-foto lebar. Jika ada dua foto atau lebih, komponen di
-`components/home/ExperienceSection.tsx` (sekitar baris 43–54) otomatis membuat
-galeri kartu dua kolom. Tidak perlu membuat kartu sendiri atau mengubah
-komponen. Foto memakai `object-contain`, sehingga keseluruhan gambar terlihat.
+foto lebar. Jika ada dua foto atau lebih, `components/home/ExperienceSection.tsx`
+menyerahkan daftar gambar ke `components/home/ExperienceGallery.tsx`. Slider
+membalik kartu secara 3D, berpindah otomatis setiap 5 detik, dan mengulang dari
+foto pertama setelah foto terakhir. Foto memakai `object-contain`, sehingga
+keseluruhan gambar terlihat tanpa dipotong. Tombol Previous/Next berpindah
+manual; Pause/Play mengontrol putar otomatis. Putar otomatis berhenti sementara
+saat pointer berada di galeri atau saat galeri mendapat fokus keyboard.
 
 Untuk menghapus foto dari halaman, hapus objeknya dari daftar `images`. Untuk
 menghapus seluruh foto dari suatu experience, hapus properti `images` dari
@@ -187,6 +190,24 @@ Di `content/experience.ts`, tambahkan objek baru ke array `experience`:
 
 Foto tidak wajib. Kalau ingin galeri, tambahkan lebih banyak objek di `images`.
 Gunakan koma setelah setiap objek, kecuali objek terakhir dalam array.
+
+### Menambahkan tombol tautan pada experience
+
+Objek experience dapat memiliki daftar `links`. Tombol akan muncul di bawah
+bullet deskripsi. Contoh untuk tombol nilai magang Kemenag:
+
+```ts
+links: [
+  {
+    label: "View Internship Evaluation",
+    href: "https://drive.google.com/file/d/FILE_ID/view?usp=sharing",
+  },
+],
+```
+
+Ganti URL contoh dengan tautan Drive milikmu. `ExperienceSection.tsx` membaca
+`entry.links` dan menampilkan setiap item sebagai tombol eksternal yang dibuka
+di tab baru. Pastikan file/folder Drive memiliki izin akses yang sesuai.
 
 ---
 

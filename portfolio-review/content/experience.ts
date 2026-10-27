@@ -5,6 +5,8 @@ export type ExperienceEntry = {
   bullets: string[];
   /** Photos under /public. One photo stays as a single feature image; multiple photos become a gallery. */
   images?: { src: string; alt: string }[];
+  /** Optional external links shown as buttons below this experience. */
+  links?: { label: string; href: string }[];
   highlight?: {
     label: string;
     lines: string[];
@@ -22,8 +24,8 @@ export const experience: ExperienceEntry[] = [
         alt: "Tennis Circle Jakarta members posing together on a tennis court at sunset",
       },
       {
-    src: "/images/experience/tennis-circle2.jpeg",
-    alt: "Brand partner event organized with Tennis Circle",
+        src: "/images/experience/tennis-circle2.jpeg",
+        alt: "Brand partner event organized with Tennis Circle",
       },
     ],
     bullets: [
@@ -33,20 +35,25 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    organization: "Kementerian Agama, Bekasi City",
+    organization: "Kementerian Agama Kota Bekasi",
     role: "Public Relations Intern",
     period: "Dec 2025 – Feb 2026",
     images: [
       {
         src: "/images/experience/kemenag.jpeg",
         alt: "Eriel with a colleague in front of the information center sign at Kementerian Agama Kota Bekasi",
-        href: "/certificates/toefl-prediction-test.pdf"
       },
     ],
     bullets: [
       "Prepared internal activities and routine operations, keeping documentation and activity records organized.",
       "Drafted administrative documents, internal communications, and public-relations materials using Microsoft Word, Excel, Canva, and CapCut.",
       "Resolved basic laptop and computer issues and supported event administration.",
+    ],
+    links: [
+      {
+        label: "View Internship Evaluation",
+        href: "https://drive.google.com/file/d/1jAU304EvwYNtppMKxCUSGFQeb4S1ZK6u/view?usp=drive_link",
+      },
     ],
   },
 ];

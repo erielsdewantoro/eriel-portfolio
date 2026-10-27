@@ -14,9 +14,9 @@ export function AboutSection() {
               thesis, while his portfolio demonstrates customer segmentation, business intelligence,
               and delivery-time prediction using Python, SQL, Power BI, and machine learning. He
               brings the same practical focus to operations: coordinating weekly activities and
-              partner events for a community of about 300 members, then applying his public-relations,
-              documentation, and basic IT-support experience during an internship at the Ministry of
-              Religious Affairs in Bekasi. He is comfortable connecting analysis with clear
+              partner events for a community of about 150 members, then applying his public-relations,
+              documentation, and basic IT-support experience during an internship at Kementerian Agama
+              Kota Bekasi. He is comfortable connecting analysis with clear
               communication and reliable day-to-day execution.
             </p>
             <div className="mt-6 flex gap-6 text-[15px]">
