@@ -6,7 +6,7 @@ export const site = {
   positioning:
     "Information Technology Graduate · Data & Business Analytics · Operations & IT Support",
   supportingStatement:
-    "An Information Technology graduate with a 3.70/4.00 GPA who turns data into clear analysis and practical decisions. Combines Python, SQL, Power BI, and machine learning projects with hands-on experience coordinating events and member services for a 300-person community, supporting brand partners, and handling public relations, documentation, and basic IT support.",
+    "An Information Technology graduate with a 3.70/4.00 GPA who turns data into clear analysis and practical decisions. Combines Python, SQL, Power BI, and machine learning projects with hands-on experience coordinating events and member services for a 150-person community, supporting brand partners, and handling public relations, documentation, and basic IT support.",
   primaryCta: { label: "View Projects", href: "/projects" },
   secondaryCta: { label: "Contact Me", href: "#contact" },
   nav: [
@@ -35,7 +35,7 @@ export const site = {
     },
     {
       label: "Operations & brand events",
-      detail: "Weekly multi-court activities for ~300 members and partner events",
+      detail: "Weekly multi-court activities for ~150 members and partner events",
       href: "/#experience",
     },
     {

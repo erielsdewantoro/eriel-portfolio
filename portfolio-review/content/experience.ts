@@ -33,13 +33,14 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    organization: "Ministry of Religious Affairs, Bekasi City",
+    organization: "Kementerian Agama, Bekasi City",
     role: "Public Relations Intern",
     period: "Dec 2025 – Feb 2026",
     images: [
       {
         src: "/images/experience/kemenag.jpeg",
         alt: "Eriel with a colleague in front of the information center sign at Kementerian Agama Kota Bekasi",
+        href: "/certificates/toefl-prediction-test.pdf"
       },
     ],
     bullets: [
