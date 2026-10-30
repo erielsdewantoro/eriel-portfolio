@@ -25,11 +25,18 @@ if (!slug || !title || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
 }
 
 const file = path.join(root, "content", "projects.ts");
+const translationsFile = path.join(root, "content", "project-translations.ts");
 const src = fs.readFileSync(file, "utf8");
+const translationsSrc = fs.readFileSync(translationsFile, "utf8");
 const MARKER = "  // <<NEW-PROJECTS-HERE>>";
+const TRANSLATIONS_MARKER = "  // <<NEW-PROJECT-TRANSLATIONS-HERE>>";
 
 if (!src.includes(MARKER)) {
   console.error("Marker comment not found in content/projects.ts — add it back above the closing `];`.");
+  process.exit(1);
+}
+if (!translationsSrc.includes(TRANSLATIONS_MARKER)) {
+  console.error("Indonesian translation marker not found in content/project-translations.ts — add it back before the closing `};`.");
   process.exit(1);
 }
 if (src.includes(`slug: "${slug}"`)) {
@@ -79,17 +86,37 @@ const entry = `  // ------------------------------------------------------------
 
 `;
 
+const translationEntry = `  "${slug}": {
+    title: "TODO: judul proyek dalam Bahasa Indonesia",
+    cardDescription: "TODO: ringkasan satu kalimat yang mudah dipahami.",
+    resultLine: "TODO: hasil singkat yang sudah dipastikan.",
+    recruiterSummary: "TODO: ringkasan proyek, pekerjaan, dan bukti hasil.",
+    technicalSummary: "TODO: penjelasan teknis singkat dan batasannya.",
+    caseStudy: {
+      plainOpening: "TODO: penjelasan proyek dengan bahasa sederhana.",
+      problem: "TODO: kebutuhan atau masalah yang dijawab.",
+      whatIDid: "TODO: pekerjaan yang benar-benar dilakukan.",
+      resultPlain: "TODO: arti hasil dalam bahasa sederhana.",
+      technicalDetail: "TODO: metode, data, dan alat yang dipakai.",
+      limitations: ["TODO: batasan proyek yang perlu diketahui."],
+      futureImprovements: [],
+    },
+  },
+`;
+
 fs.writeFileSync(file, src.replace(MARKER, entry + MARKER));
+fs.writeFileSync(translationsFile, translationsSrc.replace(TRANSLATIONS_MARKER, translationEntry + TRANSLATIONS_MARKER));
 const imgDir = path.join(root, "public", "images", "projects", slug);
 fs.mkdirSync(imgDir, { recursive: true });
 fs.writeFileSync(path.join(imgDir, ".gitkeep"), "");
 
 console.log(`
 ✔ Added "${title}" to content/projects.ts  (status: draft)
+✔ Added an Indonesian translation draft to content/project-translations.ts
 ✔ Created public/images/projects/${slug}/   (put screenshots here)
 
 Next:
-  1. Open content/projects.ts and replace every TODO.
+  1. Replace the TODO fields in content/projects.ts and content/project-translations.ts.
   2. Add images to the folder above and uncomment thumbnail / visualEvidence.
   3. Change status to "published" (and featured: true if it should be on the homepage).
 `);

@@ -24,13 +24,23 @@ oleh aplikasi.
 | Experience dan foto pengalaman | `content/experience.ts` | `components/home/ExperienceSection.tsx` |
 | Pendidikan, bootcamp, sertifikat | `content/education.ts` | `components/home/EducationSection.tsx` |
 | Skills, kategori, bahasa | `content/skills.ts` | `components/home/SkillsSection.tsx` |
-| Project cards dan isi studi kasus | `content/projects.ts` | `components/projects/ProjectCard.tsx` dan `components/case-study/` |
+| Project cards dan copy bahasa Inggris | `content/projects.ts` | `components/projects/ProjectCard.tsx` dan `components/case-study/` |
+| Terjemahan project ke Bahasa Indonesia | `content/project-translations.ts` | Dipilih otomatis berdasarkan slug project |
 | Kontak, WhatsApp, navigasi, footer | `content/site.ts` | `components/home/ContactSection.tsx`, `components/layout/` |
 | Judul tab browser dan metadata situs | `app/layout.tsx` | Metadata Next.js |
 | Warna dan tampilan umum | `app/globals.css` | Dipakai di semua halaman |
 
 Untuk perubahan isi, biasanya edit `content/*.ts`. Komponen hanya perlu diedit
 kalau ingin mengubah susunan atau cara tampilnya.
+
+### Bahasa Inggris dan Bahasa Indonesia
+
+Pengunjung bisa mengganti bahasa melalui tombol **EN / ID** di navigasi.
+Pilihan bahasa disimpan di browser pengunjung. Teks utama situs tersedia dalam
+dua bahasa; untuk project, isi Inggris ada di `content/projects.ts` dan
+terjemahan Indonesia berada di `content/project-translations.ts` dengan `slug`
+yang sama. Saat membuat project baru, isi semua kolom `TODO` pada kedua file
+sebelum mengubah `status` menjadi `published`.
 
 ---
 
@@ -315,10 +325,13 @@ Pakai slug unik dengan huruf kecil, angka, dan tanda hubung. Perintah ini:
 
 1. Menambahkan kerangka objek ke `content/projects.ts` dengan `status: "draft"`.
 2. Membuat folder `public/images/projects/sales-forecast/`.
+3. Membuat kerangka copy Bahasa Indonesia di `content/project-translations.ts`.
 
 ### Mengisi project
 
-Buka entry baru di `content/projects.ts`, lalu ganti semua teks `TODO`.
+Buka entry baru di `content/projects.ts` dan `content/project-translations.ts`,
+lalu ganti semua teks `TODO` di kedua bahasa. Slug di kedua file harus sama.
+Jika terjemahan belum diisi, teks Inggris akan dipakai sementara.
 
 - `title`: nama yang tampil.
 - `cardDescription`: satu kalimat sederhana untuk kartu.
@@ -329,7 +342,7 @@ Buka entry baru di `content/projects.ts`, lalu ganti semua teks `TODO`.
 - `links`: masukkan GitHub, demo, atau Figma yang memang dapat dibuka publik.
 - `recruiterSummary`, `technicalSummary`: ringkasan profesional dan teknis.
 - `caseStudy`: cerita masalah, pekerjaan, hasil, metode, keterbatasan, dan gambar.
-- `seo`: judul dan deskripsi halaman project untuk hasil pencarian.
+- `seo`: judul dan deskripsi halaman project untuk hasil pencarian (saat ini Inggris).
 - `thumbnail`: gambar kecil untuk kartu project.
 - `featured: true`: membuat project eligible tampil di pilihan project Home.
 - `status: "published"`: menampilkan project di situs.

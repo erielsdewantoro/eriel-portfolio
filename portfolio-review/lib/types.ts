@@ -93,6 +93,36 @@ export type Project = {
   needsConfirmation?: string[];
 };
 
+/** Indonesian display copy. Project facts and measurements stay in the source data. */
+export type ProjectTranslation = {
+  title?: string;
+  cardDescription?: string;
+  resultLine?: string;
+  recruiterSummary?: string;
+  technicalSummary?: string;
+  caseStudy?: {
+    plainOpening?: string;
+    problem?: string;
+    whatIDid?: string;
+    resultPlain?: string;
+    technicalDetail?: string;
+    limitations?: string[];
+    futureImprovements?: string[];
+    visualEvidenceCaptions?: string[];
+  };
+  researchData?: {
+    datasetStatLabels?: string[];
+    classSplitLabels?: string[];
+  };
+};
+
+export const CATEGORY_LABELS_ID: Record<Category, string> = {
+  "data-bi": "Data & BI",
+  "machine-learning": "Machine Learning",
+  "web-it": "Web & IT",
+  academic: "Akademik",
+};
+
 /**
  * Shared project-list filters. Every page/component that lists or looks up
  * projects goes through these, so a new project only needs a `status`

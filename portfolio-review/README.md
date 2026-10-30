@@ -1,12 +1,13 @@
 # Eriel Setiawan Dewantoro — Portfolio
 
 Next.js (App Router) + TypeScript + Tailwind CSS v4.
-Dark navy/cyan design by default, with a light-mode toggle.
+Dark navy/cyan design by default, with light/dark and English/Indonesian controls.
 
 ## Publish this portfolio (quick guide)
 
-See **[docs/PUBLISH.md](docs/PUBLISH.md)** for the copy-ready steps to push this
-folder to GitHub and deploy it on Vercel.
+See **[docs/PUBLISH.md](docs/PUBLISH.md)** for the copy-ready steps to push the
+repository from `C:\Eriel\Codex_Erl` and deploy it on Vercel. The Vercel Root
+Directory must be `portfolio-review`.
 
 For regular changes, see **[docs/MAINTENANCE.md](docs/MAINTENANCE.md)** for where
 to edit text, replace or add photos, add projects, and update certificates.
@@ -58,10 +59,11 @@ the chat. The phone number is not displayed as text.
 
 ## Publish (Vercel — recommended)
 
-1. Push this folder to a GitHub repository.
-2. Go to vercel.com → **Add New → Project** → import the repository → **Deploy**
-   (all defaults are correct for Next.js).
-3. Every later `git push` redeploys automatically.
+1. Push the repository to GitHub; detailed commands are in
+   **[docs/PUBLISH.md](docs/PUBLISH.md)**.
+2. Import the repository in Vercel and set its Root Directory to
+   `portfolio-review`.
+3. Every later push to `main` redeploys automatically.
 4. Optional custom domain: add it in Vercel, then set
    `NEXT_PUBLIC_SITE_URL=https://your-domain` in Vercel → Settings → Environment
    Variables (see `.env.example`). Without it the `*.vercel.app` address is used.

@@ -23,8 +23,8 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      aria-label="Toggle light and dark theme"
-      title="Toggle light / dark theme"
+      aria-label="Toggle light/dark theme / Ganti tema terang/gelap"
+      title="Toggle light/dark theme / Ganti tema terang/gelap"
       className="focus-ring flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-text)] transition-colors duration-[var(--duration-fast)] hover:border-[var(--color-border-strong)] hover:text-[var(--color-accent)]"
     >
       <MoonIcon className="theme-icon-moon" />

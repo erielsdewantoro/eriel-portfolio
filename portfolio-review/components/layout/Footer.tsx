@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 import { WhatsAppIcon } from "@/components/ui/Icons";
+import { LocalizedText } from "@/components/ui/LocalizedText";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -9,10 +10,10 @@ export function Footer() {
       <div className="container-max flex flex-col gap-6 py-12 md:flex-row md:items-center md:justify-between">
         <div>
           <p className="text-[16px] font-bold text-[var(--color-accent)]">{site.name}</p>
-          <p className="mt-1 max-w-[460px] text-[13px] text-[var(--color-text-muted)]">{site.positioning}</p>
+          <p className="mt-1 max-w-[460px] text-[13px] text-[var(--color-text-muted)]"><LocalizedText en={site.positioning} id={site.positioningId} /></p>
         </div>
         <nav aria-label="Footer" className="flex gap-6 text-[14px] font-medium">
-          <a href={site.social.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Chat with Eriel on WhatsApp, opens in new tab" className="focus-ring hover:text-[#25D366]">
+          <a href={site.social.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Chat with Eriel on WhatsApp / Hubungi Eriel melalui WhatsApp, opens in new tab / buka di tab baru" className="focus-ring hover:text-[#25D366]">
             <WhatsAppIcon size={20} />
           </a>
           <a href={site.social.github} target="_blank" rel="noopener noreferrer" className="focus-ring hover:text-[var(--color-accent)]">
@@ -22,7 +23,7 @@ export function Footer() {
             LinkedIn<span className="sr-only"> (opens in new tab)</span>
           </a>
           <Link href="/#contact" className="focus-ring hover:text-[var(--color-accent)]">
-            Contact
+            <LocalizedText en="Contact" id="Kontak" />
           </Link>
         </nav>
       </div>

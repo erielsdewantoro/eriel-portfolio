@@ -1,0 +1,148 @@
+import type { ProjectTranslation } from "@/lib/types";
+
+/** Plain-language Indonesian copy for published/private project pages. */
+export const projectTranslationsId: Record<string, ProjectTranslation> = {
+  "jakarta-ispu-classification": {
+    title: "Klasifikasi ISPU Jakarta",
+    cardDescription: "Menganalisis data kualitas udara Jakarta untuk mengenali hari ketika polusi masuk kategori tidak sehat atau lebih buruk.",
+    resultLine: "Membandingkan model yang memakai data hari itu dengan model yang hanya memakai data 14 hari sebelumnya.",
+    recruiterSummary: "Skripsi yang membandingkan beberapa cara untuk mengelompokkan kualitas udara harian Jakarta. Saya mengolah data 2020–2024, membandingkan Random Forest, XGBoost, LSTM, dan GRU, lalu memeriksa faktor yang paling memengaruhi hasil model. Metode dan kode proyek tersedia di GitHub.",
+    technicalSummary: "Penelitian memakai 1.826 catatan harian yang valid dari 2020–2024. Data dibagi berdasarkan waktu: 2020–2023 untuk pelatihan dan 2024 untuk pengujian. Random Forest dan XGBoost mencapai F1 0,9600; ROC-AUC Random Forest 0,9813. LSTM dan GRU memakai data 14 hari sebelumnya dan memperoleh F1 masing-masing 0,4839 dan 0,4000. Hasil kedua kelompok model tidak setara karena jenis masukan datanya berbeda.",
+    caseStudy: {
+      plainOpening: "Proyek ini menggunakan catatan polusi harian Jakarta untuk menilai apakah kualitas udara pada suatu hari tergolong tidak sehat atau lebih buruk. Saya membandingkan beberapa metode dan memeriksa jenis polutan yang paling berpengaruh terhadap keputusan model.",
+      problem: "Apakah data polutan yang tercatat dapat membantu mengenali hari dengan kualitas udara tidak sehat?",
+      whatIDid: "Saya merapikan data polusi selama lima tahun, membuat model dengan dua jenis masukan, lalu memakai analisis SHAP untuk melihat faktor yang paling dipertimbangkan model.",
+      resultPlain: "Model yang memakai data polutan pada hari yang sama menghasilkan nilai tinggi. Model yang hanya melihat dua minggu sebelumnya memiliki hasil lebih rendah karena harus memperkirakan kondisi hari ini tanpa melihat data hari ini. Kedua hasil dijelaskan terpisah karena tugasnya berbeda.",
+      technicalDetail: "Data berasal dari berkas ispu_dki_all.csv di Kaggle, dengan sumber Dinas Lingkungan Hidup DKI Jakarta / Satu Data Jakarta. Data mentah berisi 5.538 baris dan 11 kolom untuk 2010–2025. Penelitian memakai 2020–2024: 1.827 catatan sebelum pemeriksaan dan 1.826 catatan valid setelah satu baris bertanda tidak ada data dikeluarkan. Data latih 2020–2023 berisi 1.460 hari; data uji 2024 berisi 366 hari. Pengisian nilai kosong, StandardScaler, dan 17 fitur disusun tanpa menggunakan data uji untuk melatih model.",
+      limitations: [
+        "Perbandingan empat model tidak sepenuhnya setara: Random Forest dan XGBoost menerima nilai polutan pada hari yang diprediksi, sedangkan LSTM dan GRU hanya memakai 14 hari sebelumnya.",
+        "SHAP menunjukkan faktor yang memengaruhi keluaran model, bukan bukti sebab-akibat di dunia nyata.",
+        "Analisis SHAP per tahun digunakan untuk memahami hasil yang sudah ada, bukan untuk menguji prediksi baru.",
+        "Data PM2.5 untuk 2020 tidak tersedia, sehingga hasil analisis tahun tersebut perlu dibaca dengan hati-hati.",
+        "Pengujian menggunakan satu pembagian waktu dan belum mencakup pencarian parameter atau validasi silang.",
+      ],
+      futureImprovements: [
+        "Menguji model secara bertahap pada beberapa tahun, bukan hanya satu pembagian data.",
+        "Mencari pengaturan model yang lebih baik, terutama untuk LSTM dan GRU.",
+        "Menguji semua model dengan jenis data historis yang setara agar perbandingan lebih adil.",
+      ],
+      visualEvidenceCaptions: [],
+    },
+    researchData: {
+      datasetStatLabels: ["Data mentah", "Rentang data mentah", "Rentang penelitian", "Catatan valid", "Data latih / uji"],
+      classSplitLabels: ["Tidak tergolong Tidak Sehat+", "Tidak Sehat+"],
+    },
+  },
+  "wta-tennis-analysis": {
+    title: "Analisis Pertandingan Tenis WTA",
+    cardDescription: "Menelusuri lebih dari 20 tahun pertandingan tenis putri untuk melihat pola lapangan, kejutan hasil pertandingan, dan performa pemain.",
+    resultLine: "Sebanyak 29,57% pertandingan dimenangi pemain yang bukan unggulan; lebih dari separuh pertandingan dimainkan di lapangan keras.",
+    recruiterSummary: "Proyek analisis dan dashboard yang merangkum lebih dari 42.810 pertandingan WTA pada 2006–2025. Data dibersihkan dengan Python dan Pandas, lalu disajikan dalam dashboard interaktif agar pola pertandingan mudah dijelajahi.",
+    technicalSummary: "Analisis deskriptif terhadap lebih dari 42.810 pertandingan: 29,57% berakhir dengan kejutan, lebih dari separuh dimainkan di lapangan keras, dan rata-rata pertandingan berlangsung 3,33 set. Daftar pemain teratas didasarkan pada jumlah kemenangan, bukan ukuran konsistensi. Analisis ini tidak memakai uji signifikansi statistik.",
+    caseStudy: {
+      plainOpening: "Proyek ini mencari pola dari lebih dari 20 tahun pertandingan tenis profesional putri: jenis lapangan yang paling sering dipakai, seberapa sering pemain nonunggulan menang, dan pemain dengan jumlah kemenangan terbanyak.",
+      problem: "Data pertandingan mentah sulit dipahami tanpa dirapikan dan disajikan dalam bentuk ringkasan visual.",
+      whatIDid: "Saya merapikan lebih dari 42.810 catatan pertandingan WTA dari 2006–2025 dengan Python dan Pandas, lalu membuat dashboard interaktif menggunakan Power BI dan Streamlit.",
+      resultPlain: "Sebanyak 29,57% pertandingan berakhir dengan kejutan hasil. Lapangan keras dipakai di lebih dari setengah pertandingan. Beberapa pemain, termasuk Wozniacki, Azarenka, dan Serena Williams, memiliki jumlah kemenangan tertinggi.",
+      technicalDetail: "Dataset mencakup lebih dari 42.810 pertandingan dan 812 pemain pada 2006–2025. Rata-rata pertandingan berlangsung 3,33 set. Peringkat pemain memakai jumlah kemenangan, bukan ukuran konsistensi terpisah; karena itu hasilnya disebut jumlah kemenangan terbanyak.",
+      limitations: [
+        "Proyek ini merangkum data masa lalu; proyek ini tidak memprediksi pemenang pertandingan berikutnya.",
+        "Tren belum dilengkapi rentang ketidakpastian atau uji statistik.",
+      ],
+      futureImprovements: [
+        "Menambahkan halaman khusus untuk menelusuri statistik pemain dan perbandingan antar pemain.",
+        "Membuat proyek prediksi hasil pertandingan sebagai pengembangan terpisah.",
+      ],
+      visualEvidenceCaptions: ["Gambaran dashboard pertandingan WTA (label antarmuka dalam Bahasa Indonesia)."],
+    },
+  },
+  "rfm-customer-segmentation": {
+    title: "Segmentasi Pelanggan RFM",
+    cardDescription: "Mengelompokkan pelanggan berdasarkan kapan terakhir membeli, seberapa sering membeli, dan jumlah belanja agar kebutuhan tiap kelompok lebih mudah dipahami.",
+    resultLine: "Sebanyak 43% pelanggan masuk kelompok Lost/Lapsed, yaitu pelanggan dengan satu pembelian pada paruh awal periode data.",
+    recruiterSummary: "Proyek pengelompokan pelanggan dari 2.090 catatan aktivitas yang mencakup 201 transaksi oleh 167 pelanggan. Saya menyiapkan data dengan Excel dan Python, membuat dashboard Power BI, dan menyarankan penawaran berbeda untuk tiap kelompok pelanggan.",
+    technicalSummary: "Nilai Recency dan Monetary dibagi menjadi empat tingkat berdasarkan peringkat; Frequency memakai dua tingkat karena sebagian besar pelanggan hanya membeli sekali. Sebanyak 73 dari 167 pelanggan (43%) masuk Lost/Lapsed. Label ini berdasarkan aturan proyek, bukan ukuran pelanggan benar-benar berhenti. Tidak ada kesimpulan sebab-akibat tentang alasan pelanggan tidak kembali.",
+    caseStudy: {
+      plainOpening: "Pelanggan dikelompokkan berdasarkan tiga hal: kapan terakhir membeli, seberapa sering membeli, dan jumlah belanja. Pendekatan ini dikenal sebagai RFM.",
+      problem: "Perilaku dan nilai setiap pelanggan berbeda. Jika semua pelanggan diperlakukan sama, penawaran pemasaran bisa kurang tepat sasaran.",
+      whatIDid: "Saya membersihkan catatan aktivitas di Excel dan Python, menghitung nilai RFM, mengelompokkan pelanggan, membuat dashboard, dan menyarankan penawaran untuk mengajak pelanggan lama berbelanja kembali.",
+      resultPlain: "Sebanyak 73 dari 167 pelanggan (43%) masuk kelompok Lost/Lapsed berdasarkan aturan proyek: mereka melakukan satu pembelian pada paruh awal periode data. Hari Senin memiliki transaksi terbanyak.",
+      technicalDetail: "Dataset Kaggle berisi 2.090 catatan aktivitas, termasuk 201 transaksi pembelian oleh 167 pelanggan. Recency menghitung hari sejak pembelian terakhir; Monetary menjumlahkan belanja; keduanya diberi nilai 1–4 menurut peringkat. Frequency bernilai 1 untuk satu pembelian dan 2 untuk pembelian berulang. Kelompok pelanggan dibuat dengan aturan tetap dari ketiga nilai ini. Jumlah belanja berkaitan kuat dengan harga barang (korelasi 0,95) dan lemah dengan jumlah barang (0,13). Hubungan ini tidak membuktikan penyebab pelanggan berhenti membeli.",
+      limitations: [
+        "Dataset relatif kecil: 201 transaksi dari 167 pelanggan; beberapa kelompok berisi sedikit orang.",
+        "Karena mayoritas hanya membeli sekali, frekuensi pembelian hanya terbagi menjadi dua tingkat.",
+        "Label Lost/Lapsed adalah hasil aturan pengelompokan, bukan bukti bahwa pelanggan benar-benar berhenti membeli.",
+        "Perubahan kelompok pelanggan dari waktu ke waktu belum diuji.",
+      ],
+      futureImprovements: [
+        "Menguji pendekatan pada data yang lebih besar dengan lebih banyak transaksi berulang.",
+        "Melacak perubahan kelompok pelanggan dari waktu ke waktu.",
+      ],
+      visualEvidenceCaptions: ["Kelompok pelanggan hasil analisis RFM (label dashboard dalam Bahasa Indonesia)."],
+    },
+  },
+  "zomato-delivery-prediction": {
+    title: "Perkiraan Waktu Pengantaran Zomato",
+    cardDescription: "Memperkirakan lama pengantaran makanan berdasarkan jarak, penilaian kurir, dan rincian pesanan.",
+    resultLine: "Rata-rata perkiraan waktu meleset sekitar 4 menit.",
+    recruiterSummary: "Proyek ini membandingkan beberapa cara memperkirakan lama pengantaran dari lebih dari 45.000 catatan pesanan. Model terpilih ditampilkan dalam aplikasi Streamlit agar pengguna dapat mencoba perkiraan waktu untuk suatu pesanan.",
+    technicalSummary: "Proyek perkiraan angka, bukan pengelompokan kelas. Model Random Forest memperoleh R² sekitar 0,75 dan selisih rata-rata sekitar 4 menit. Data waktu pesanan yang kosong ditangani saat pembersihan. Hasil belum diuji dengan data operasional bisnis yang sebenarnya.",
+    caseStudy: {
+      plainOpening: "Proyek ini memperkirakan berapa lama pesanan makanan akan sampai, dengan mempertimbangkan jarak dan penilaian kurir.",
+      problem: "Ketidakpastian waktu antar dapat membuat pelanggan kesulitan merencanakan penerimaan pesanan.",
+      whatIDid: "Saya membersihkan lebih dari 45.000 catatan pengantaran, menghitung jarak perjalanan, membandingkan tiga model perkiraan, lalu membuat aplikasi untuk mencoba hasil prediksi.",
+      resultPlain: "Rata-rata hasil perkiraan berbeda sekitar 4 menit dari waktu pada data. Nilai ini belum diuji terhadap standar layanan bisnis yang sebenarnya.",
+      technicalDetail: "Ini adalah tugas perkiraan angka, bukan klasifikasi. Lebih dari 45.000 catatan dipakai dan 1.700 lebih waktu pesanan yang kosong ditangani. Model Random Forest memperoleh R² sekitar 0,75 dan MAE sekitar 4 menit. Jarak dihitung dari koordinat, ditambah waktu persiapan pesanan. Hasil belum divalidasi pada operasi pengantaran nyata.",
+      limitations: ["Belum ada validasi dengan data operasi nyata untuk memastikan apakah selisih sekitar 4 menit dapat diterima oleh bisnis atau pelanggan."],
+      futureImprovements: ["Mencari pengaturan model yang lebih baik.", "Membandingkan pendekatan perkiraan waktu dengan pengelompokan pesanan tepat waktu atau terlambat."],
+      visualEvidenceCaptions: ["Ringkasan temuan, aplikasi perkiraan waktu, dan grafik faktor terkait. Angka dampak pada slide adalah perkiraan, bukan hasil terukur."],
+    },
+  },
+  "hajj-pilgrim-satisfaction": {
+    title: "Analisis Kepuasan Jemaah Haji & Umrah",
+    cardDescription: "Menganalisis faktor yang berkaitan dengan kepuasan jemaah selama ibadah Haji atau Umrah.",
+    resultLine: "Rasa aman menjadi faktor yang paling menonjol dalam hasil model.",
+    recruiterSummary: "Proyek analisis dan dashboard interaktif untuk memahami faktor yang berkaitan dengan kepuasan jemaah. Hasilnya disajikan dalam aplikasi Streamlit empat halaman, termasuk simulasi prediksi untuk beberapa skenario.",
+    technicalSummary: "Model XGBoost menandai penilaian rasa aman sebagai faktor penting; waktu antre dan pemeriksaan menjadi faktor yang paling menurunkan prediksi kepuasan. Faktor tersebut adalah pola yang ditemukan model, bukan bukti penyebab. Dataset kemungkinan sintetis.",
+    caseStudy: {
+      plainOpening: "Proyek ini melihat faktor yang berkaitan dengan kepuasan jemaah selama Haji atau Umrah.",
+      problem: "Memahami pengalaman jemaah dapat membantu menentukan bagian layanan dan pengelolaan kerumunan yang perlu diperhatikan.",
+      whatIDid: "Saya menganalisis data pengelolaan kerumunan jemaah, membuat model pengelompokan, dan menyajikan hasilnya melalui dashboard interaktif dengan simulasi skenario.",
+      resultPlain: "Dalam hasil model, penilaian rasa aman paling kuat berkaitan dengan kepuasan. Waktu antre dan pemeriksaan berkaitan dengan penurunan nilai kepuasan.",
+      technicalDetail: "Model XGBoost dibuat dari dataset Hajj & Umrah Crowd Management di Kaggle. Faktor yang ditampilkan adalah hal-hal yang dipertimbangkan model, bukan bukti sebab-akibat. Repository menjelaskan bahwa sebaran data terlihat sangat rapi dan kemungkinan dibuat secara sintetis. Dashboard tersedia dalam Bahasa Indonesia.",
+      limitations: ["Hasil menunjukkan hubungan dalam data, bukan penyebab langsung kepuasan.", "Dataset kemungkinan sintetis sehingga pola di lapangan dapat berbeda."],
+      futureImprovements: ["Menguji temuan menggunakan data nyata jika tersedia."],
+      visualEvidenceCaptions: ["Halaman ringkasan dashboard (antarmuka dalam Bahasa Indonesia)."],
+    },
+  },
+  "sala-x": {
+    title: "Aplikasi Pendaftaran Pendakian SALA-X",
+    cardDescription: "Rancangan aplikasi agar pendaki dapat mendaftar jalur pendakian secara online tanpa mengantre di lokasi.",
+    resultLine: "Prototipe interaktif mencakup alur utama pendaftaran pendakian.",
+    recruiterSummary: "Proyek desain UI/UX untuk mempermudah pendaftaran pendakian Gunung Salak yang sebelumnya dilakukan manual. Rancangan Figma mencakup pendaftaran online, pengecekan kuota jalur, konfirmasi pemesanan, dan laporan admin. Ini adalah prototipe desain, bukan aplikasi yang sudah dibangun.",
+    technicalSummary: "Pekerjaan desain menggunakan riset pengguna, wireframe, dan prototipe interaktif beresolusi tinggi di Figma. Belum ada backend, aplikasi yang diluncurkan, atau hasil uji kegunaan yang terdokumentasi.",
+    caseStudy: {
+      plainOpening: "Ini adalah rancangan aplikasi agar pendaki dapat mendaftar jalur secara online, tanpa harus mengantre di meja pendaftaran.",
+      problem: "Pendaftaran manual untuk pendakian Gunung Salak dapat menimbulkan antrean, catatan yang sulit dirapikan, dan pekerjaan tambahan bagi pengelola.",
+      whatIDid: "Saya mempelajari kebutuhan pengguna, membuat wireframe, dan merancang prototipe interaktif di Figma untuk pendaftaran, pengecekan kuota, konfirmasi pemesanan, dan laporan admin.",
+      resultPlain: "Hasilnya adalah prototipe desain interaktif yang menunjukkan alur utama pendaftaran. Prototipe ini belum menjadi aplikasi yang dapat digunakan secara langsung.",
+      technicalDetail: "Proyek dibuat di Figma dan belum memiliki backend atau kode aplikasi aktif. Layar utama mencakup pendaftaran online, kuota pada tiga jalur, pengelolaan kegiatan, konfirmasi pemesanan, dan laporan admin.",
+      limitations: ["Belum ada hasil uji kegunaan yang terdokumentasi.", "Belum dibuat sebagai aplikasi yang dapat digunakan; hasil proyek saat ini berupa desain."],
+      futureImprovements: ["Menguji desain bersama calon pendaki.", "Mengembangkan desain menjadi aplikasi setelah alurnya tervalidasi."],
+      visualEvidenceCaptions: ["Layar prototipe SALA-X: halaman sambutan, menu utama, dan kuota jalur (antarmuka dalam Bahasa Indonesia)."],
+    },
+  },
+  "wedding-invitation": {
+    title: "Situs Undangan Pernikahan",
+    cardDescription: "Situs undangan untuk membantu tamu melihat informasi acara dan mengirim konfirmasi kehadiran secara online.",
+    resultLine: "",
+    recruiterSummary: "Situs undangan pernikahan untuk klien. Kode sumber dan basis data tidak dibuka karena berisi informasi tamu.",
+    technicalSummary: "Rincian teknis tidak dipublikasikan karena kode dan basis data memuat informasi pribadi tamu.",
+    caseStudy: {
+      plainOpening: "Situs undangan pernikahan yang membantu tamu melihat informasi acara dan mengirim konfirmasi kehadiran secara online.",
+      technicalDetail: "Kode sumber dan basis data tidak dibuka karena berisi informasi tamu. Rincian publik proyek ini sengaja dibatasi untuk menjaga privasi.",
+    },
+  },
+
+  // <<NEW-PROJECT-TRANSLATIONS-HERE>> — `npm run new-project` inserts an Indonesian draft here.
+};

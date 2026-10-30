@@ -4,6 +4,7 @@ import { toCardData } from "@/lib/types";
 import { existingAssetOrUndefined } from "@/lib/assets";
 import { TextLink } from "@/components/ui/TextLink";
 import { Reveal } from "@/components/ui/Reveal";
+import { LocalizedText } from "@/components/ui/LocalizedText";
 
 const MAX_SUPPORTING_CARDS = 3;
 
@@ -25,9 +26,9 @@ export function SelectedProjects() {
     <section id="projects" className="section-space scroll-mt-20">
       <div className="container-max">
         <div className="mb-2 flex flex-wrap items-end justify-between gap-4">
-          <h2 className="section-title">Selected Projects</h2>
+          <h2 className="section-title"><LocalizedText en="Selected Projects" id="Proyek Pilihan" /></h2>
           <TextLink href="/projects" className="mb-9">
-            View all projects
+            <LocalizedText en="View all projects" id="Lihat semua proyek" />
           </TextLink>
         </div>
 

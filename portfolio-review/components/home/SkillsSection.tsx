@@ -4,6 +4,8 @@ import { marqueeSkills, skillGroups } from "@/content/skills";
 import { Chip } from "@/components/ui/Chip";
 import { Reveal } from "@/components/ui/Reveal";
 import { projectsUsingSkill } from "@/lib/skillEvidence";
+import { LocalizedText } from "@/components/ui/LocalizedText";
+import { projectTranslationsId } from "@/content/project-translations";
 
 function MarqueeSet({ duplicate = false }: { duplicate?: boolean }) {
   return (
@@ -22,7 +24,7 @@ function MarqueeSet({ duplicate = false }: { duplicate?: boolean }) {
           </span>
           <span className="leading-tight">
             <span className="block text-[15px] font-semibold">{s.label}</span>
-            {s.note && <span className="block text-[11.5px] text-[var(--color-text-muted)]">{s.note}</span>}
+            {s.note && <span className="block text-[11.5px] text-[var(--color-text-muted)]"><LocalizedText en={s.note} id={s.noteId ?? s.note} /></span>}
           </span>
         </li>
       ))}
@@ -34,9 +36,9 @@ export function SkillsSection() {
   return (
     <section id="skills" className="section-space scroll-mt-20">
       <div className="container-max">
-        <h2 className="section-title">Skills</h2>
+        <h2 className="section-title"><LocalizedText en="Skills" id="Keahlian" /></h2>
 
-        <div className="marquee mb-12" role="region" aria-label="Tools and technologies, scrolling list">
+        <div className="marquee mb-12" role="region" aria-label="Tools and technologies / Alat dan teknologi">
           <div className="marquee-track">
             <MarqueeSet />
             <MarqueeSet duplicate />
@@ -54,10 +56,11 @@ export function SkillsSection() {
             return (
               <Reveal key={group.title} delay={(gi % 2) * 80}>
                 <div className="card h-full p-6">
-                  <h3 className="mb-4 text-[18px] text-[var(--color-accent)]">{group.title}</h3>
+                  <h3 className="mb-2 text-[18px] text-[var(--color-accent)]"><LocalizedText en={group.title} id={group.titleId} /></h3>
+                  <p className="mb-4 text-[13px] text-[var(--color-text-muted)]"><LocalizedText en={group.description} id={group.descriptionId} /></p>
                   <div className="flex flex-wrap gap-2">
                     {group.chips.map((chip) => (
-                      <Chip key={chip.label} label={chip.label} note={chip.note} />
+                      <Chip key={chip.label} label={chip.label} note={chip.note} noteId={chip.noteId} />
                     ))}
                   </div>
                   {evidenced.length > 0 && (
@@ -65,12 +68,12 @@ export function SkillsSection() {
                       {evidenced.map((e, i) => (
                         <span key={e.chip.label}>
                           {i > 0 && " · "}
-                          {e.chip.label}:{" "}
+                          {e.chip.label}:{" "}<LocalizedText en="Used in " id="Digunakan pada " />
                           {e.matches.map((m, j) => (
                             <span key={m.slug}>
                               {j > 0 && ", "}
                               <Link href={`/projects/${m.slug}`} className="focus-ring underline hover:text-[var(--color-accent)]">
-                                {m.title}
+                                <LocalizedText en={m.title} id={projectTranslationsId[m.slug]?.title ?? m.title} />
                               </Link>
                             </span>
                           ))}

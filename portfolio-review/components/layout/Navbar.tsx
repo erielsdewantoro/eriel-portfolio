@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { site } from "@/content/site";
 import { GitHubIcon, LinkedInIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { LanguageToggle } from "@/components/layout/LanguageToggle";
+import { LocalizedText } from "@/components/ui/LocalizedText";
 
 // "education" and "projects" are tracked too so the highlight clears when no nav item matches.
 const SECTION_IDS = ["projects", "experience", "skills", "education", "about", "contact"];
@@ -121,7 +123,7 @@ export function Navbar() {
                   current ? "text-[var(--color-accent)]" : "text-[var(--color-text)]"
                 }`}
               >
-                {item.label}
+                <LocalizedText en={item.label} id={item.labelId} />
                 <span
                   aria-hidden="true"
                   className={`absolute -bottom-1.5 left-0 h-[2px] bg-[var(--color-accent)] transition-all duration-[var(--duration-base)] ${
@@ -136,7 +138,7 @@ export function Navbar() {
               href={site.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub profile, opens in new tab"
+              aria-label="GitHub profile / Profil GitHub, opens in new tab / buka di tab baru"
               className="focus-ring flex h-11 w-11 items-center justify-center text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-accent)]"
             >
               <GitHubIcon />
@@ -145,7 +147,7 @@ export function Navbar() {
               href={site.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn profile, opens in new tab"
+              aria-label="LinkedIn profile / Profil LinkedIn, opens in new tab / buka di tab baru"
               className="focus-ring flex h-11 w-11 items-center justify-center text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-accent)]"
             >
               <LinkedInIcon size={18} />
@@ -154,22 +156,24 @@ export function Navbar() {
               href={site.social.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Chat with Eriel on WhatsApp, opens in new tab"
+              aria-label="Chat with Eriel on WhatsApp / Hubungi Eriel melalui WhatsApp, opens in new tab / buka di tab baru"
               className="focus-ring flex h-11 w-11 items-center justify-center text-[var(--color-text-secondary)] transition-colors hover:text-[#25D366]"
             >
               <WhatsAppIcon size={19} />
             </a>
+            <LanguageToggle />
             <ThemeToggle />
           </div>
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
+          <LanguageToggle />
           <ThemeToggle />
           <button
             ref={menuButtonRef}
             type="button"
             className="focus-ring flex h-11 w-11 flex-col items-center justify-center gap-[5px]"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? "Close menu / Tutup menu" : "Open menu / Buka menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
@@ -198,7 +202,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="focus-ring block border-b border-[var(--color-border)] py-4 text-[24px] font-semibold text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
               >
-                {item.label}
+                <LocalizedText en={item.label} id={item.labelId} />
               </Link>
             ))}
             <div className="mt-6 flex gap-4">
@@ -222,7 +226,7 @@ export function Navbar() {
                 href={site.social.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Chat with Eriel on WhatsApp, opens in new tab"
+                aria-label="Chat with Eriel on WhatsApp / Hubungi Eriel melalui WhatsApp, opens in new tab / buka di tab baru"
                 className="focus-ring flex items-center justify-center rounded-[var(--radius-sm)] border border-[var(--color-border)] px-4 py-3 text-[#25D366]"
               >
                 <WhatsAppIcon size={20} />

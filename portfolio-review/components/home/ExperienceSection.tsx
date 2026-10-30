@@ -4,12 +4,13 @@ import { existingAssetOrUndefined } from "@/lib/assets";
 import { Reveal } from "@/components/ui/Reveal";
 import { ExperienceGallery } from "@/components/home/ExperienceGallery";
 import { Button } from "@/components/ui/Button";
+import { LocalizedText } from "@/components/ui/LocalizedText";
 
 export function ExperienceSection() {
   return (
     <section id="experience" className="section-space scroll-mt-20">
       <div className="container-max">
-        <h2 className="section-title">Experience</h2>
+        <h2 className="section-title"><LocalizedText en="Experience" id="Pengalaman" /></h2>
         <div className="flex flex-col gap-8">
           {experience.map((entry, i) => {
             const images = (entry.images ?? [])
@@ -23,10 +24,10 @@ export function ExperienceSection() {
                   <div className="p-6 md:flex-1 md:p-9">
                     <p className="eyebrow text-[var(--color-accent)]">{entry.period}</p>
                     <h3 className="mt-2 text-[22px] md:text-[26px]">{entry.organization}</h3>
-                    <p className="mt-1 text-[15.5px] font-semibold text-[var(--color-text-secondary)]">{entry.role}</p>
+                    <p className="mt-1 text-[15.5px] font-semibold text-[var(--color-text-secondary)]"><LocalizedText en={entry.role} id={entry.roleId ?? entry.role} /></p>
                     <ul className="mt-5 flex list-disc flex-col gap-2.5 pl-5 text-[15px] leading-[1.7] text-[var(--color-text-secondary)] marker:text-[var(--color-accent)]">
                       {entry.bullets.map((b, j) => (
-                        <li key={j}>{b}</li>
+                        <li key={j}><LocalizedText en={b} id={entry.bulletsId?.[j] ?? b} /></li>
                       ))}
                     </ul>
 
@@ -34,7 +35,7 @@ export function ExperienceSection() {
                       <div className="mt-5 flex flex-wrap gap-3">
                         {entry.links.map((link) => (
                           <Button key={link.href} href={link.href} variant="outline" external>
-                            {link.label}
+                            <LocalizedText en={link.label} id={link.labelId ?? link.label} />
                           </Button>
                         ))}
                       </div>

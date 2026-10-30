@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { projects, getProjectBySlug } from "@/content/projects";
 import { isPubliclyVisible } from "@/lib/types";
+import { projectTranslationsId } from "@/content/project-translations";
+import { LocalizedText } from "@/components/ui/LocalizedText";
 import {
   CaseStudyHero,
   AtAGlance,
@@ -51,6 +53,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
 
   const cs = project.caseStudy;
   const isPrivate = project.status === "private";
+  const idCopy = projectTranslationsId[project.slug];
+  const idCase = idCopy?.caseStudy;
   const isISPU = Boolean(project.researchData);
   const isSALAX = project.slug === "sala-x";
 
@@ -60,9 +64,11 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
       <>
         <CaseStudyHero project={project} />
         <AtAGlance project={project} />
-        <ProseSection heading="Overview">{cs.plainOpening}</ProseSection>
+        <ProseSection heading="Overview" headingId="Ringkasan">
+          <LocalizedText en={cs.plainOpening} id={idCase?.plainOpening ?? cs.plainOpening} />
+        </ProseSection>
         <PrivateNotice project={project} />
-        <LimitationsSection items={cs.limitations} />
+        <LimitationsSection items={cs.limitations} itemsId={idCase?.limitations} />
         <LinksSection project={project} />
         <RelatedProjects current={project} />
       </>
@@ -75,22 +81,26 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
       <CaseStudyHero project={project} />
       <AtAGlance project={project} />
 
-      <ProseSection heading="Overview">{cs.plainOpening}</ProseSection>
-      {cs.problem && <ProseSection heading="Problem">{cs.problem}</ProseSection>}
-      {cs.whatIDid && <ProseSection heading="What I Did">{cs.whatIDid}</ProseSection>}
-      {cs.resultPlain && <ProseSection heading="Result">{cs.resultPlain}</ProseSection>}
+      <ProseSection heading="Overview" headingId="Ringkasan">
+        <LocalizedText en={cs.plainOpening} id={idCase?.plainOpening ?? cs.plainOpening} />
+      </ProseSection>
+      {cs.problem && <ProseSection heading="Problem" headingId="Tantangan"><LocalizedText en={cs.problem} id={idCase?.problem ?? cs.problem} /></ProseSection>}
+      {cs.whatIDid && <ProseSection heading="What I Did" headingId="Yang Saya Kerjakan"><LocalizedText en={cs.whatIDid} id={idCase?.whatIDid ?? cs.whatIDid} /></ProseSection>}
+      {cs.resultPlain && <ProseSection heading="Result" headingId="Hasil"><LocalizedText en={cs.resultPlain} id={idCase?.resultPlain ?? cs.resultPlain} /></ProseSection>}
 
       {/* SALA-X leads with screens instead of a Data/Input section */}
       {isSALAX && <VisualEvidenceSection project={project} />}
 
-      <ProseSection heading="How It Works Technically">{cs.technicalDetail}</ProseSection>
+      <ProseSection heading="Project details" headingId="Rincian proyek">
+        <LocalizedText en={cs.technicalDetail} id={idCase?.technicalDetail ?? cs.technicalDetail} />
+      </ProseSection>
 
       {isISPU && <ISPUResearchSection project={project} />}
 
       {!isSALAX && <VisualEvidenceSection project={project} />}
 
-      <LimitationsSection items={cs.limitations} />
-      <FutureImprovementsSection items={cs.futureImprovements} />
+      <LimitationsSection items={cs.limitations} itemsId={idCase?.limitations} />
+      <FutureImprovementsSection items={cs.futureImprovements} itemsId={idCase?.futureImprovements} />
       <LinksSection project={project} />
       <RelatedProjects current={project} />
     </>

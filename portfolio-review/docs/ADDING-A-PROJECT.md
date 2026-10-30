@@ -10,13 +10,14 @@ This does two things:
 
 1. Creates the folder `public/images/projects/sales-forecast/` — put screenshots there.
 2. Adds a ready-to-edit entry to `content/projects.ts` with `status: "draft"`.
+3. Adds a matching Indonesian copy draft to `content/project-translations.ts`.
 
 Then:
 
-1. Open `content/projects.ts`, find the new entry, and replace every `TODO`.
+1. Open both `content/projects.ts` and `content/project-translations.ts`; replace every `TODO` in the English and Indonesian copy.
 2. Copy your screenshots into the folder and uncomment `thumbnail` / `visualEvidence`.
 3. Change `status` to `"published"` (and `featured: true` if it should appear on the homepage).
-4. Run `npm run dev` to preview, then commit and push — Vercel redeploys automatically.
+4. Run `npm run dev` to preview both languages, then commit and push — Vercel redeploys automatically.
 
 A `draft` project is invisible everywhere (cards, pages, sitemap), so you can save
 half-finished work safely. Skills "Used in" evidence updates by itself from `techTags`.

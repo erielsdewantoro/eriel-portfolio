@@ -1,15 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Project, ProjectCardData, CATEGORY_LABELS } from "@/lib/types";
+import { Project, ProjectCardData, CATEGORY_LABELS, CATEGORY_LABELS_ID } from "@/lib/types";
 import { Chip } from "@/components/ui/Chip";
 import { TextLink } from "@/components/ui/TextLink";
 import { ArrowIcon } from "@/components/ui/Icons";
+import { LocalizedText } from "@/components/ui/LocalizedText";
+import { projectTranslationsId } from "@/content/project-translations";
 
 function LinkRow({ project }: { project: ProjectCardData }) {
   return (
     <div className="relative z-10 mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px]">
       <span className="inline-flex items-center gap-1.5 font-semibold text-[var(--color-accent)]">
-        {project.status === "private" ? "View overview" : "View case study"}
+        <LocalizedText en={project.status === "private" ? "View overview" : "View case study"} id={project.status === "private" ? "Lihat ringkasan" : "Lihat studi kasus"} />
         <ArrowIcon size={14} className="transition-transform group-hover:translate-x-1" />
       </span>
       {project.links.github && (
@@ -33,6 +35,7 @@ function LinkRow({ project }: { project: ProjectCardData }) {
 
 export function ProjectCard({ project }: { project: ProjectCardData }) {
   const isPrivate = project.status === "private";
+  const idCopy = projectTranslationsId[project.slug];
   return (
     <article className="card card-hover group relative flex h-full flex-col overflow-hidden">
       {project.thumbnail ? (
@@ -47,15 +50,15 @@ export function ProjectCard({ project }: { project: ProjectCardData }) {
         </div>
       ) : isPrivate ? (
         <div className="flex aspect-[16/10] items-center justify-center border-b border-[var(--color-border)] bg-[var(--color-surface-subtle)] px-6 text-center text-[13px] text-[var(--color-text-muted)]">
-          Private client project — source not public
+          <LocalizedText en="Private client project — details are not public" id="Proyek klien privat — rincian tidak dipublikasikan" />
         </div>
       ) : null}
 
       <div className="flex flex-1 flex-col p-6">
         <div className="mb-3 flex flex-wrap gap-2">
-          {isPrivate && <Chip label="Private" />}
+          {isPrivate && <Chip label="Private" labelId="Privat" />}
           {project.categories.map((c) => (
-            <Chip key={c} label={CATEGORY_LABELS[c]} />
+            <Chip key={c} label={CATEGORY_LABELS[c]} labelId={CATEGORY_LABELS_ID[c]} />
           ))}
         </div>
         <h3 className="text-[20px] leading-[1.25]">
@@ -63,7 +66,7 @@ export function ProjectCard({ project }: { project: ProjectCardData }) {
             {project.title}
           </Link>
         </h3>
-        <p className="mt-2 text-[14.5px] leading-[1.6] text-[var(--color-text-secondary)]">{project.cardDescription}</p>
+        <p className="mt-2 text-[14.5px] leading-[1.6] text-[var(--color-text-secondary)]"><LocalizedText en={project.cardDescription} id={idCopy?.cardDescription ?? project.cardDescription} /></p>
 
         {project.techTags.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
@@ -75,8 +78,8 @@ export function ProjectCard({ project }: { project: ProjectCardData }) {
 
         {project.resultLine && (
           <div className="mt-5 border-t border-[var(--color-border)] pt-4">
-            <p className="eyebrow">Result</p>
-            <p className="mt-1 text-[14.5px] font-medium leading-[1.55] text-[var(--color-text)]">{project.resultLine}</p>
+            <p className="eyebrow"><LocalizedText en="Result" id="Hasil" /></p>
+            <p className="mt-1 text-[14.5px] font-medium leading-[1.55] text-[var(--color-text)]"><LocalizedText en={project.resultLine} id={idCopy?.resultLine ?? project.resultLine} /></p>
           </div>
         )}
 
@@ -90,22 +93,23 @@ export function ProjectCard({ project }: { project: ProjectCardData }) {
 
 export function FeaturedProjectCard({ project, thumbnail }: { project: Project; thumbnail?: string }) {
   const research = project.researchData;
+  const idCopy = projectTranslationsId[project.slug];
   return (
     <article className="card card-hover group relative overflow-hidden p-6 md:p-9 lg:grid lg:grid-cols-12 lg:gap-10">
       <div className="lg:col-span-7">
-        <p className="eyebrow mb-3 text-[var(--color-accent)]">Undergraduate thesis · Flagship</p>
+        <p className="eyebrow mb-3 text-[var(--color-accent)]"><LocalizedText en="Undergraduate thesis · Featured project" id="Skripsi · Proyek unggulan" /></p>
         <h3 className="text-[28px] leading-[1.15] md:text-[36px]">
           <Link href={`/projects/${project.slug}`} className="card-link focus-ring">
             {project.title}
           </Link>
         </h3>
-        <p className="mt-4 text-[16.5px] leading-[1.7] text-[var(--color-text-secondary)]">{project.cardDescription}</p>
+        <p className="mt-4 text-[16.5px] leading-[1.7] text-[var(--color-text-secondary)]"><LocalizedText en={project.cardDescription} id={idCopy?.cardDescription ?? project.cardDescription} /></p>
         <div className="mt-5 flex flex-wrap gap-2">
           {project.techTags.map((t) => (
             <Chip key={t} label={t} />
           ))}
         </div>
-        <p className="mt-5 text-[15px] font-medium leading-[1.6]">{project.resultLine}</p>
+        <p className="mt-5 text-[15px] font-medium leading-[1.6]"><LocalizedText en={project.resultLine} id={idCopy?.resultLine ?? project.resultLine} /></p>
         <LinkRow project={project} />
       </div>
 

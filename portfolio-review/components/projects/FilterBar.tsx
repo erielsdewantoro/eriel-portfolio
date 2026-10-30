@@ -1,15 +1,16 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Category, CATEGORY_LABELS, ProjectCardData } from "@/lib/types";
+import { Category, CATEGORY_LABELS, CATEGORY_LABELS_ID, ProjectCardData } from "@/lib/types";
 import { ProjectCard } from "@/components/projects/ProjectCard";
+import { LocalizedText } from "@/components/ui/LocalizedText";
 
-const FILTERS: { key: Category | "all"; label: string }[] = [
-  { key: "all", label: "All" },
-  { key: "data-bi", label: CATEGORY_LABELS["data-bi"] },
-  { key: "machine-learning", label: CATEGORY_LABELS["machine-learning"] },
-  { key: "web-it", label: CATEGORY_LABELS["web-it"] },
-  { key: "academic", label: CATEGORY_LABELS["academic"] },
+const FILTERS: { key: Category | "all"; label: string; labelId: string }[] = [
+  { key: "all", label: "All", labelId: "Semua" },
+  { key: "data-bi", label: CATEGORY_LABELS["data-bi"], labelId: CATEGORY_LABELS_ID["data-bi"] },
+  { key: "machine-learning", label: CATEGORY_LABELS["machine-learning"], labelId: CATEGORY_LABELS_ID["machine-learning"] },
+  { key: "web-it", label: CATEGORY_LABELS["web-it"], labelId: CATEGORY_LABELS_ID["web-it"] },
+  { key: "academic", label: CATEGORY_LABELS.academic, labelId: CATEGORY_LABELS_ID.academic },
 ];
 
 export function FilterBar({ projects }: { projects: ProjectCardData[] }) {
@@ -22,7 +23,7 @@ export function FilterBar({ projects }: { projects: ProjectCardData[] }) {
 
   return (
     <div>
-      <div role="group" aria-label="Filter projects by category" className="flex flex-wrap gap-3">
+      <div role="group" aria-label="Filter projects by category / Saring proyek berdasarkan kategori" className="flex flex-wrap gap-3">
         {FILTERS.map((f) => {
           const pressed = active === f.key;
           return (
@@ -38,7 +39,7 @@ export function FilterBar({ projects }: { projects: ProjectCardData[] }) {
               }`}
             >
               {pressed && <span aria-hidden="true">✓ </span>}
-              {f.label}
+              <LocalizedText en={f.label} id={f.labelId} />
             </button>
           );
         })}
@@ -46,20 +47,20 @@ export function FilterBar({ projects }: { projects: ProjectCardData[] }) {
 
       <h2 className="sr-only">Project list</h2>
       <p aria-live="polite" className="mt-3 text-[14px] text-[var(--color-text-muted)]">
-        Showing {filtered.length} of {projects.length} projects
+        <LocalizedText en={<>Showing {filtered.length} of {projects.length} projects</>} id={<>Menampilkan {filtered.length} dari {projects.length} proyek</>} />
       </p>
 
       {filtered.length === 0 ? (
         <div className="mt-10 text-center">
           <p className="text-[15px] text-[var(--color-text-secondary)]">
-            No projects match this filter.
+            <LocalizedText en="No projects match this filter." id="Tidak ada proyek pada kategori ini." />
           </p>
           <button
             type="button"
             onClick={() => setActive("all")}
             className="focus-ring mt-3 underline text-[var(--color-accent)]"
           >
-            Show all projects
+            <LocalizedText en="Show all projects" id="Tampilkan semua proyek" />
           </button>
         </div>
       ) : (

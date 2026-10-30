@@ -1,0 +1,5 @@
+# Repository root: keep only the portfolio source and its required assets.
+/output/
+/outputs/
+/tmp/
+/work/

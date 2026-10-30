@@ -3,9 +3,13 @@ export const education = {
   logoAlt: "Universitas Bina Sarana Informatika logo",
   institution: "Universitas Bina Sarana Informatika (UBSI)",
   degree: "Bachelor of Information Technology (S1 Teknologi Informasi)",
+  degreeId: "Sarjana Teknologi Informasi (S1)",
   status: "Graduated September 2026 · GPA 3.70/4.00",
+  statusId: "Lulus September 2026 · IPK 3,70/4,00",
   relevantCoursework:
     "Relevant coursework: Database, Operating Systems, Statistics, Machine Learning, and Data Analysis.",
+  relevantCourseworkId:
+    "Mata kuliah terkait: Basis Data, Sistem Operasi, Statistika, Machine Learning, dan Analisis Data.",
 };
 
 export type Credential = {
@@ -13,6 +17,8 @@ export type Credential = {
   issuer: string;
   period?: string;
   detail?: string;
+  detailId?: string;
+  titleId?: string;
   credentialId?: string;
   /** Certificate image under /public (renders only if the file exists). */
   image?: string;
@@ -23,7 +29,9 @@ export type Credential = {
 
 export type NonFormalProgram = Credential & {
   summary: string;
+  summaryId: string;
   learningAreas: string[];
+  learningAreasId: string[];
 };
 
 /** Add completed bootcamps, courses, or other non-formal programs here. */
@@ -36,12 +44,21 @@ export const nonFormalEducation: NonFormalProgram[] = [
     credentialId: "201029DS34113026",
     summary:
       "Project-based training that complements the Information Technology degree with practical data analysis and machine learning work. These skills support the ISPU classification thesis and analytics projects in this portfolio.",
+    summaryId:
+      "Pelatihan berbasis proyek yang melengkapi pendidikan Teknologi Informasi dengan praktik analisis data dan machine learning. Materinya digunakan dalam skripsi klasifikasi ISPU dan proyek analisis lain di portfolio ini.",
     learningAreas: [
       "Python and data preparation",
       "Statistics and exploratory data analysis",
       "SQL and database management",
       "Data visualization and storytelling",
       "Machine learning fundamentals",
+    ],
+    learningAreasId: [
+      "Python dan persiapan data",
+      "Statistika dan eksplorasi data",
+      "SQL dan pengelolaan basis data",
+      "Visualisasi dan penyampaian temuan data",
+      "Dasar-dasar machine learning",
     ],
     image: "/images/certs/dibimbing.png",
     imageAlt: "Data Science & Analysis Bootcamp certificate from Dibimbing.id",
@@ -55,6 +72,7 @@ export const certifications: Credential[] = [
     issuer: "Language Institute, Universitas Bina Sarana Informatika",
     period: "August 2026",
     detail: "Total score 603 · Listening 55 · Structure & Written Expression 63 · Reading 63",
+    detailId: "Skor total 603 · Listening 55 · Structure & Written Expression 63 · Reading 63",
     image: "/images/certs/toefl-prediction-test.png",
     imageAlt: "TOEFL Prediction Test certificate from Universitas Bina Sarana Informatika, total score 603",
     href: "/certificates/toefl-prediction-test.pdf",

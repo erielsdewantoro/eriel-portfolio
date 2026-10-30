@@ -68,6 +68,8 @@ export function ExperienceGallery({ images }: { images: GalleryImage[] }) {
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocused(false);
       }}
+      role="region"
+      aria-label="Experience photo gallery / Galeri foto pengalaman"
     >
       <div className="[perspective:1200px]">
         <div
@@ -88,21 +90,21 @@ export function ExperienceGallery({ images }: { images: GalleryImage[] }) {
       </div>
 
       <div className="mt-3 flex items-center justify-between gap-2 text-[12px] text-[var(--color-text-muted)]">
-        <button type="button" onClick={() => turnCard(-1)} className="focus-ring rounded px-2 py-1 hover:text-[var(--color-accent)]" aria-label="Show previous experience photo">
-          Previous
+        <button type="button" onClick={() => turnCard(-1)} className="focus-ring rounded px-2 py-1 hover:text-[var(--color-accent)]" aria-label="Show previous photo / Tampilkan foto sebelumnya">
+          <span className="language-en" lang="en">Previous</span><span className="language-id" lang="id">Sebelumnya</span>
         </button>
         <span aria-live="polite">{index + 1} / {images.length}</span>
-        <button type="button" onClick={() => turnCard(1)} className="focus-ring rounded px-2 py-1 hover:text-[var(--color-accent)]" aria-label="Show next experience photo">
-          Next
+        <button type="button" onClick={() => turnCard(1)} className="focus-ring rounded px-2 py-1 hover:text-[var(--color-accent)]" aria-label="Show next photo / Tampilkan foto berikutnya">
+          <span className="language-en" lang="en">Next</span><span className="language-id" lang="id">Berikutnya</span>
         </button>
         <button
           type="button"
           onClick={() => setUserPaused((value) => !value)}
           className="focus-ring rounded px-2 py-1 hover:text-[var(--color-accent)]"
-          aria-label={userPaused ? "Resume automatic photo slideshow" : "Pause automatic photo slideshow"}
+          aria-label={userPaused ? "Resume slideshow / Lanjutkan putar otomatis" : "Pause slideshow / Jeda putar otomatis"}
           aria-pressed={userPaused}
         >
-          {userPaused ? "Play" : "Pause"}
+          {userPaused ? <><span className="language-en" lang="en">Play</span><span className="language-id" lang="id">Putar</span></> : <><span className="language-en" lang="en">Pause</span><span className="language-id" lang="id">Jeda</span></>}
         </button>
       </div>
     </div>

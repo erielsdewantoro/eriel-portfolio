@@ -3,13 +3,14 @@ import { certifications, education, nonFormalEducation } from "@/content/educati
 import { existingAssetOrUndefined } from "@/lib/assets";
 import { Reveal } from "@/components/ui/Reveal";
 import { TextLink } from "@/components/ui/TextLink";
+import { LocalizedText } from "@/components/ui/LocalizedText";
 
 export function EducationSection() {
   const logo = existingAssetOrUndefined(education.logo);
   return (
     <section id="education" className="section-space scroll-mt-20">
       <div className="container-max">
-        <h2 className="section-title">Education</h2>
+        <h2 className="section-title"><LocalizedText en="Education" id="Pendidikan Formal" /></h2>
         <Reveal>
           <div className="card flex flex-col items-start gap-6 p-6 sm:flex-row sm:items-center md:p-8">
             {logo && (
@@ -19,18 +20,18 @@ export function EducationSection() {
             )}
             <div>
               <h3 className="text-[20px] text-[var(--color-accent)]">{education.institution}</h3>
-              <p className="mt-1 text-[15.5px] text-[var(--color-text-secondary)]">{education.degree}</p>
-              <p className="mt-1 text-[14px] text-[var(--color-text-muted)]">{education.status}</p>
+              <p className="mt-1 text-[15.5px] text-[var(--color-text-secondary)]"><LocalizedText en={education.degree} id={education.degreeId} /></p>
+              <p className="mt-1 text-[14px] text-[var(--color-text-muted)]"><LocalizedText en={education.status} id={education.statusId} /></p>
               <p className="mt-3 text-[13.5px] leading-relaxed text-[var(--color-text-secondary)]">
-                {education.relevantCoursework}
+                <LocalizedText en={education.relevantCoursework} id={education.relevantCourseworkId} />
               </p>
             </div>
           </div>
         </Reveal>
 
-        <h2 className="section-title mt-16">Non-formal Education</h2>
+        <h2 className="section-title mt-16"><LocalizedText en="Non-formal Education" id="Pendidikan Nonformal" /></h2>
         <p className="mb-6 max-w-[720px] text-[15px] leading-relaxed text-[var(--color-text-secondary)]">
-          Practical courses and bootcamps that extend formal study with applied tools and project work.
+          <LocalizedText en="Courses and bootcamps that build practical skills through tools and project work." id="Kursus dan bootcamp untuk melatih keterampilan praktis melalui penggunaan alat dan pengerjaan proyek." />
         </p>
         <div className="grid gap-6 md:grid-cols-2">
           {nonFormalEducation.map((program, i) => {
@@ -58,16 +59,16 @@ export function EducationSection() {
                     {program.credentialId && (
                       <p className="mt-1 font-mono text-[12px] text-[var(--color-text-muted)]">Certificate ID: {program.credentialId}</p>
                     )}
-                    <p className="mt-4 text-[14px] leading-relaxed text-[var(--color-text-secondary)]">{program.summary}</p>
-                    <h4 className="mt-4 text-[13px] font-semibold uppercase tracking-wide text-[var(--color-text-muted)]">Relevant learning areas</h4>
+                    <p className="mt-4 text-[14px] leading-relaxed text-[var(--color-text-secondary)]"><LocalizedText en={program.summary} id={program.summaryId} /></p>
+                    <h4 className="mt-4 text-[13px] font-semibold uppercase tracking-wide text-[var(--color-text-muted)]"><LocalizedText en="Relevant learning areas" id="Materi yang relevan" /></h4>
                     <ul className="mt-2 flex flex-wrap gap-2">
                       {program.learningAreas.map((area) => (
-                        <li key={area} className="rounded-full border border-[var(--color-border)] px-3 py-1 text-[12px] text-[var(--color-text-secondary)]">{area}</li>
+                        <li key={area} className="rounded-full border border-[var(--color-border)] px-3 py-1 text-[12px] text-[var(--color-text-secondary)]"><LocalizedText en={area} id={program.learningAreasId[program.learningAreas.indexOf(area)] ?? area} /></li>
                       ))}
                     </ul>
                     {program.href && (
                       <div className="mt-auto pt-5 text-[14px]">
-                        <TextLink href={program.href} external>Verify certificate</TextLink>
+                        <TextLink href={program.href} external><LocalizedText en="Verify certificate" id="Verifikasi sertifikat" /></TextLink>
                       </div>
                     )}
                   </div>
@@ -77,7 +78,7 @@ export function EducationSection() {
           })}
         </div>
 
-        <h2 className="section-title mt-16">Certifications</h2>
+        <h2 className="section-title mt-16"><LocalizedText en="Certifications" id="Sertifikat" /></h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {certifications.map((cred, i) => {
             const image = existingAssetOrUndefined(cred.image);
@@ -96,19 +97,19 @@ export function EducationSection() {
                     </div>
                   )}
                   <div className="flex flex-1 flex-col p-5">
-                    <h3 className="text-[16px] leading-snug">{cred.title}</h3>
+                    <h3 className="text-[16px] leading-snug"><LocalizedText en={cred.title} id={cred.titleId ?? cred.title} /></h3>
                     <p className="mt-1.5 text-[13.5px] text-[var(--color-text-secondary)]">
                       {cred.issuer}
                       {cred.period ? ` · ${cred.period}` : ""}
                     </p>
-                    {cred.detail && <p className="mt-1 text-[13px] font-medium text-[var(--color-accent)]">{cred.detail}</p>}
+                    {cred.detail && <p className="mt-1 text-[13px] font-medium text-[var(--color-accent)]"><LocalizedText en={cred.detail} id={cred.detailId ?? cred.detail} /></p>}
                     {cred.credentialId && (
                       <p className="mt-1 font-mono text-[12px] text-[var(--color-text-muted)]">ID: {cred.credentialId}</p>
                     )}
                     {cred.href && (
                       <div className="mt-auto pt-4 text-[14px]">
                         <TextLink href={cred.href} external>
-                          View certificate
+                          <LocalizedText en="View certificate" id="Lihat sertifikat" />
                         </TextLink>
                       </div>
                     )}

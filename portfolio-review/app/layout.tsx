@@ -41,12 +41,14 @@ export const metadata: Metadata = {
  * flags that JS is available so scroll-reveal can safely hide content.
  */
 const themeInit = `(function(){var d=document.documentElement;try{var t=localStorage.getItem("theme");d.setAttribute("data-theme",t==="light"?"light":"dark");}catch(e){d.setAttribute("data-theme","dark");}d.classList.add("js");})();`;
+const languageInit = `(function(){var d=document.documentElement;try{var l=localStorage.getItem("language");if(l==="id"){d.setAttribute("data-language","id");d.setAttribute("lang","id");}else{d.setAttribute("data-language","en");d.setAttribute("lang","en");}}catch(e){d.setAttribute("data-language","en");d.setAttribute("lang","en");}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="dark" className="h-full antialiased" suppressHydrationWarning>
+    <html lang="en" data-language="en" data-theme="dark" className="h-full antialiased" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <script dangerouslySetInnerHTML={{ __html: languageInit }} />
       </head>
       <body className="flex min-h-full flex-col">
         <SkipLink />
