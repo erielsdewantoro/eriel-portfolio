@@ -1,7 +1,7 @@
 export const site = {
   name: "Eriel Setiawan Dewantoro",
   profileImage: "/images/profile/eriel.jpeg",
-  profileAlt: "Portrait of Eriel Setiawan Dewantoro in a dark suit and navy tie",
+  profileAlt: "Portrait of Eriel Setiawan Dewantoro",
   eyebrow: "Universitas Bina Sarana Informatika Graduate · GPA 3.70/4.00",
   eyebrowId: "Lulusan Universitas Bina Sarana Informatika · IPK 3,70/4,00",
   positioning:
