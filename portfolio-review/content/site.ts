@@ -9,9 +9,9 @@ export const site = {
   positioningId:
     "Lulusan Teknologi Informasi · Analisis Data & Bisnis · Operasional & Dukungan IT",
   supportingStatement:
-    "An Information Technology graduate with a 3.84/4.00 GPA who turns data into clear analysis and practical decisions. Combines Python, SQL, Power BI, and machine learning projects with hands-on experience coordinating events and member services for a 150-person community, supporting brand partners, and handling public relations, documentation, and basic IT support.",
+    "An Information Technology graduate with a 3,84/4.00 GPA who turns data into clear analysis and practical decisions. Combines Python, SQL, Power BI, and machine learning projects with hands-on experience coordinating events and member services for a 150-person community, supporting brand partners, and handling public relations, documentation, and basic IT support.",
   supportingStatementId:
-    "Saya lulusan Teknologi Informasi dengan IPK 3,70/4,00. Saya mengolah data menjadi informasi yang mudah dipahami dan berguna untuk mengambil keputusan. Pengalaman saya mencakup proyek analisis data, pengelolaan kegiatan untuk sekitar 150 anggota, serta dukungan administrasi, komunikasi publik, dokumentasi, dan komputer dasar saat magang di Kementerian Agama Kota Bekasi.",
+    "Saya lulusan Teknologi Informasi dengan IPK 3,84/4,00. Saya mengolah data menjadi informasi yang mudah dipahami dan berguna untuk mengambil keputusan. Pengalaman saya mencakup proyek analisis data, pengelolaan kegiatan untuk sekitar 150 anggota, serta dukungan administrasi, komunikasi publik, dokumentasi, dan komputer dasar saat magang di Kementerian Agama Kota Bekasi.",
   primaryCta: { label: "View Projects", labelId: "Lihat Proyek", href: "/projects" },
   secondaryCta: { label: "Contact Me", labelId: "Hubungi Saya", href: "#contact" },
   nav: [
