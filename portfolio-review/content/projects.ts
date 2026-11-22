@@ -408,6 +408,35 @@ export const projects: Project[] = [
     ],
   },
 
+  // ---------------------------------------------------------------
+  // HR WORK-LIFE BALANCE ANALYTICS
+  // ---------------------------------------------------------------
+  {
+    slug: "hr-work-life-balance",
+    title: "HR Work-Life Balance Analytics",
+    status: "published",
+    featured: true,
+    categories: ["data-bi"],
+    cardDescription: "Explores how work-life balance, overtime, satisfaction, and attrition vary across employee groups.",
+    resultLine: "28.84% of employees fell into the Low WLB category; overtime employees had a 30.53% attrition rate in this dataset.",
+    techTags: ["Python", "Pandas", "NumPy", "Streamlit", "Tableau"],
+    thumbnail: "/images/projects/hr-work-life-balance/overview.png",
+    thumbnailAlt: "Tableau overview dashboard for employee work-life balance, overtime, and attrition",
+    links: { github: "https://github.com/erielsdewantoro/hr-analytics-wlb", demo: "https://hr-wlb-dashboard.streamlit.app/" },
+    recruiterSummary: "A descriptive HR analytics project covering 1,470 employees, with a Python data-cleaning pipeline and interactive Streamlit dashboard. It examines work-life balance across departments and job levels alongside overtime, satisfaction, and attrition patterns.",
+    technicalSummary: "The cleaned dataset contains 1,470 unique employees and 41 analysis columns. The project derives WLB and satisfaction groupings, summarizes group-level rates, and provides exploratory chi-square and Mann–Whitney tests. Findings are observational associations, not causal effects or predictions about individual employees.",
+    caseStudy: {
+      plainOpening: "This project helps HR explore how work-life balance is distributed across employee groups and how it appears alongside overtime, job satisfaction, and attrition.",
+      problem: "A single average can hide which departments or job levels have a larger share of employees reporting low work-life balance.",
+      whatIDid: "Cleaned and checked an encoded employee dataset, created analysis categories, summarized group patterns, and built interactive views in Streamlit alongside Tableau dashboard views.",
+      resultPlain: "Low WLB accounted for 28.84% of employees. Research & Development had the highest department share at 30.70%, while employees recorded as working overtime had a higher attrition rate than those without overtime (30.53% vs. 10.44%). These differences can guide further review, but do not establish causes.",
+      technicalDetail: "The analysis uses 1,470 unique employee records and 41 columns after cleaning, with no missing values in the resulting analysis data. It derives Low/Medium/High WLB categories, group summaries, and exploratory chi-square and Mann–Whitney tests. The Streamlit dashboard has five sections and eight global filters; Tableau dashboard screenshots are also included. The source dataset is attributed in the project README and data/SOURCE.md.",
+      limitations: ["The dataset is observational, so group differences and associations do not establish cause and effect.", "The dashboard does not predict which individual employees will leave.", "The data has no time-series snapshots, actual overtime hours, exit reasons, or workload measures.", "Exploratory tests do not adjust for confounding factors or multiple comparisons and do not include confidence intervals.", "Groups with fewer than 30 employees need especially cautious interpretation."],
+      futureImprovements: ["Add confidence intervals and multivariable analysis to better account for confounding factors.", "Use longitudinal data to compare changes in work-life balance, overtime, and attrition over time."],
+      visualEvidence: [{ src: "/images/projects/hr-work-life-balance/overview.png", alt: "Tableau dashboard summarizing employee work-life balance, overtime, and attrition", caption: "Figure 1. Tableau overview of work-life balance, overtime, and attrition." }],
+    },
+    seo: { title: "HR Work-Life Balance Analytics — Eriel Setiawan Dewantoro", description: "Descriptive HR analytics on employee work-life balance, overtime, satisfaction, and attrition using Python, Streamlit, and Tableau." },
+  },
   // <<NEW-PROJECTS-HERE>> — `npm run new-project` inserts new entries above this line.
 ];
 

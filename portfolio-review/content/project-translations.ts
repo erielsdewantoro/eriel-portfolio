@@ -144,5 +144,22 @@ export const projectTranslationsId: Record<string, ProjectTranslation> = {
     },
   },
 
+  "hr-work-life-balance": {
+    title: "Analisis Work-Life Balance Karyawan",
+    cardDescription: "Menelusuri perbedaan work-life balance, overtime, kepuasan, dan attrition di berbagai kelompok karyawan.",
+    resultLine: "28,84% karyawan masuk kategori WLB rendah; attrition pada kelompok overtime tercatat 30,53% dalam dataset ini.",
+    recruiterSummary: "Proyek analitik HR deskriptif atas 1.470 karyawan, dengan pipeline pembersihan data Python dan dashboard interaktif Streamlit. Analisis membahas work-life balance menurut departemen dan level pekerjaan, bersama pola overtime, kepuasan, dan attrition.",
+    technicalSummary: "Data bersih mencakup 1.470 karyawan unik dan 41 kolom analisis. Proyek membentuk kategori WLB dan kepuasan, menghitung ringkasan per kelompok, serta menyediakan uji chi-square dan Mann–Whitney eksploratif. Hasilnya adalah asosiasi observasional, bukan sebab-akibat atau prediksi untuk karyawan individu.",
+    caseStudy: {
+      plainOpening: "Proyek ini membantu HR melihat sebaran work-life balance di berbagai kelompok karyawan dan kaitannya dengan overtime, kepuasan kerja, serta attrition.",
+      problem: "Satu angka rata-rata dapat menyembunyikan departemen atau level pekerjaan dengan proporsi karyawan ber-WLB rendah yang lebih besar.",
+      whatIDid: "Saya membersihkan dan memeriksa dataset karyawan, membentuk kategori analisis, merangkum pola antarkelompok, lalu membuat tampilan interaktif di Streamlit dan dashboard Tableau.",
+      resultPlain: "Sebanyak 28,84% karyawan berada dalam kategori WLB rendah. Research & Development memiliki proporsi departemen tertinggi, yaitu 30,70%. Attrition pada karyawan yang tercatat bekerja overtime sebesar 30,53%, dibanding 10,44% pada kelompok tanpa overtime. Perbedaan ini dapat menjadi bahan tinjauan lebih lanjut, tetapi tidak membuktikan penyebab.",
+      technicalDetail: "Analisis menggunakan 1.470 catatan karyawan unik dan 41 kolom setelah pembersihan; data analisis tidak memiliki nilai kosong. Proyek membentuk kategori WLB rendah/sedang/tinggi, ringkasan kelompok, serta uji chi-square dan Mann–Whitney eksploratif. Dashboard Streamlit memiliki lima bagian dan delapan filter global; dokumentasi juga mencakup screenshot dashboard Tableau. Atribusi dataset tersedia di README proyek dan data/SOURCE.md.",
+      limitations: ["Dataset bersifat observasional sehingga perbedaan dan asosiasi kelompok tidak membuktikan sebab-akibat.", "Dashboard tidak memprediksi karyawan individu yang akan resign.", "Data tidak memiliki snapshot lintas waktu, jumlah jam overtime aktual, alasan keluar, atau ukuran beban kerja.", "Uji eksploratif belum mengendalikan faktor perancu atau pengujian berganda dan belum menyertakan confidence interval.", "Kelompok dengan kurang dari 30 karyawan perlu ditafsirkan dengan sangat hati-hati."],
+      futureImprovements: ["Menambahkan confidence interval dan analisis multivariat untuk mempertimbangkan faktor perancu.", "Menggunakan data longitudinal untuk membandingkan perubahan WLB, overtime, dan attrition dari waktu ke waktu."],
+      visualEvidenceCaptions: ["Ringkasan dashboard Tableau tentang work-life balance, overtime, dan attrition."],
+    },
+  },
   // <<NEW-PROJECT-TRANSLATIONS-HERE>> — `npm run new-project` inserts an Indonesian draft here.
 };
