@@ -8,27 +8,22 @@ import { LocalizedText } from "@/components/ui/LocalizedText";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pb-12 pt-12 md:pb-16 md:pt-20 lg:pt-24">
-      {/* Decorative glows (hidden from assistive tech) */}
-      <div aria-hidden="true" className="hero-blob -left-24 top-10 h-72 w-72 bg-[var(--color-accent)]" />
-      <div aria-hidden="true" className="hero-blob -right-20 bottom-0 h-80 w-80 bg-[var(--color-accent-2)]" />
-
+    <section className="hero-shell">
       <div className="container-max relative">
-        <div className="grid items-center gap-12 lg:grid-cols-12">
-          <div className="order-2 lg:order-1 lg:col-span-7">
-            <p className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-1.5 text-[12.5px] font-semibold uppercase tracking-[0.07em] text-[var(--color-text-secondary)]">
-              <span aria-hidden="true" className="pulse-dot h-2 w-2 rounded-full bg-[var(--color-accent)]" />
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="hero-copy order-2 min-w-0 lg:order-1 lg:col-span-8">
+            <p className="eyebrow mb-5">
               <LocalizedText en={site.eyebrow} id={site.eyebrowId} />
             </p>
 
-            <h1 className="gradient-text text-[40px] font-extrabold leading-[1.08] sm:text-[52px] lg:text-[60px]">
+            <h1 className="hero-name">
               {site.name}
             </h1>
 
-            <p className="mt-5 text-[18px] font-semibold leading-[1.5] text-[var(--color-accent)] md:text-[20px]">
+            <p className="hero-role mt-6">
               <LocalizedText en={site.positioning} id={site.positioningId} />
             </p>
-            <p className="mt-4 max-w-[580px] text-[16px] leading-[1.75] text-[var(--color-text-secondary)] md:text-[17px]">
+            <p className="mt-5 max-w-[620px] text-[16px] leading-[1.8] text-[var(--color-text-secondary)] md:text-[17px]">
               <LocalizedText en={site.supportingStatement} id={site.supportingStatementId} />
             </p>
 
@@ -72,13 +67,9 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="order-1 mx-auto w-full max-w-[300px] lg:order-2 lg:col-span-5 lg:max-w-[380px]">
-            <div className="relative">
-              <div
-                aria-hidden="true"
-                className="absolute -inset-2 rounded-[28px] bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-2)] opacity-60 blur-xl"
-              />
-              <div className="profile-float relative overflow-hidden rounded-[26px] border-[3px] border-[var(--color-accent)] shadow-[var(--glow-strong)]">
+          <div className="hero-photo-wrap order-1 mx-auto w-full min-w-0 max-w-[280px] lg:order-2 lg:col-span-4 lg:max-w-[340px]">
+            <div className="hero-photo">
+              <div className="relative overflow-hidden rounded-[var(--radius-lg)]">
                 <Image
                   src={site.profileImage}
                   alt={site.profileAlt}
@@ -93,15 +84,14 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Evidence strip — quick proof points for a fast skim */}
-        <Reveal className="mt-14 md:mt-20">
-          <p className="eyebrow mb-4"><LocalizedText en="Selected highlights" id="Ringkasan utama" /></p>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal className="hero-highlights mt-12 pt-6 md:mt-16 md:pt-8">
+          <p className="eyebrow mb-5"><LocalizedText en="Selected highlights" id="Ringkasan utama" /></p>
+          <ul className="grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
             {site.snapshot.map((item) => (
               <li key={item.label}>
                 <Link
                   href={item.href}
-                  className="card card-hover focus-ring group flex h-full items-start justify-between gap-3 p-5"
+                  className="focus-ring group flex h-full items-start justify-between gap-3 border-b border-[var(--color-border)] pb-4 transition-colors hover:border-[var(--color-accent)]"
                 >
                   <span>
                     <span className="block text-[15px] font-semibold leading-snug text-[var(--color-text)]">

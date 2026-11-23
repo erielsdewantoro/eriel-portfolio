@@ -32,7 +32,7 @@ export function FilterBar({ projects }: { projects: ProjectCardData[] }) {
               type="button"
               aria-pressed={pressed}
               onClick={() => setActive(f.key)}
-              className={`focus-ring min-h-[44px] rounded-full border px-5 text-[14.5px] font-medium transition-all duration-[var(--duration-fast)] ${
+              className={`focus-ring min-h-[44px] rounded-full border px-5 text-[14.5px] font-medium transition-colors duration-[var(--duration-fast)] ${
                 pressed
                   ? "border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-on-accent)] shadow-[var(--glow)]"
                   : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"

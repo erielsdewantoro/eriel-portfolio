@@ -37,9 +37,9 @@ export function ProjectCard({ project }: { project: ProjectCardData }) {
   const isPrivate = project.status === "private";
   const idCopy = projectTranslationsId[project.slug];
   return (
-    <article className="card card-hover group relative flex h-full flex-col overflow-hidden">
+    <article className="card card-hover project-card group relative flex h-full flex-col overflow-hidden">
       {project.thumbnail ? (
-        <div className="relative aspect-[16/10] overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-surface-subtle)]">
+        <div className="project-image relative aspect-[16/10] overflow-hidden border-b border-[var(--color-border)]">
           <Image
             src={project.thumbnail}
             alt={project.thumbnailAlt ?? `${project.title} preview`}
@@ -50,7 +50,7 @@ export function ProjectCard({ project }: { project: ProjectCardData }) {
         </div>
       ) : isPrivate ? (
         <div className="flex aspect-[16/10] items-center justify-center border-b border-[var(--color-border)] bg-[var(--color-surface-subtle)] px-6 text-center text-[13px] text-[var(--color-text-muted)]">
-          <LocalizedText en="Private client project — details are not public" id="Proyek klien privat — rincian tidak dipublikasikan" />
+          <LocalizedText en="Private client project. Details are not public." id="Proyek klien privat. Rincian tidak dipublikasikan." />
         </div>
       ) : null}
 
@@ -95,9 +95,9 @@ export function FeaturedProjectCard({ project, thumbnail }: { project: Project; 
   const research = project.researchData;
   const idCopy = projectTranslationsId[project.slug];
   return (
-    <article className="card card-hover group relative overflow-hidden p-6 md:p-9 lg:grid lg:grid-cols-12 lg:gap-10">
-      <div className="lg:col-span-7">
-        <p className="eyebrow mb-3 text-[var(--color-accent)]"><LocalizedText en="Undergraduate thesis · Featured project" id="Skripsi · Proyek unggulan" /></p>
+    <article className="card card-hover project-featured group relative overflow-hidden p-5 sm:p-7 md:p-9 lg:grid lg:grid-cols-12 lg:gap-10">
+      <div className="lg:col-span-7 lg:py-2">
+        <p className="eyebrow mb-3"><LocalizedText en="Undergraduate thesis · Featured project" id="Skripsi · Proyek unggulan" /></p>
         <h3 className="text-[28px] leading-[1.15] md:text-[36px]">
           <Link href={`/projects/${project.slug}`} className="card-link focus-ring">
             {project.title}
@@ -115,7 +115,7 @@ export function FeaturedProjectCard({ project, thumbnail }: { project: Project; 
 
       <div className="mt-8 flex flex-col gap-4 lg:col-span-5 lg:mt-0">
         {thumbnail && (
-          <div className="relative aspect-[16/10] overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface-subtle)]">
+          <div className="project-image relative aspect-[16/10] overflow-hidden rounded-[var(--radius-sm)] border border-[var(--color-border)]">
             <Image
               src={thumbnail}
               alt={project.thumbnailAlt ?? `${project.title} preview`}

@@ -10,6 +10,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="section-space scroll-mt-20">
       <div className="container-max">
+        <p className="eyebrow mb-2"><LocalizedText en="Where I have contributed" id="Pengalaman saya" /></p>
         <h2 className="section-title"><LocalizedText en="Experience" id="Pengalaman" /></h2>
         <div className="flex flex-col gap-8">
           {experience.map((entry, i) => {
@@ -19,9 +20,9 @@ export function ExperienceSection() {
             return (
               <Reveal key={entry.organization}>
                 <article
-                  className={`card card-hover overflow-hidden md:flex ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}
+                  className={`experience-entry overflow-hidden md:flex ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}
                 >
-                  <div className="p-6 md:flex-1 md:p-9">
+                  <div className="py-7 md:flex-1 md:py-9 md:pr-10">
                     <p className="eyebrow text-[var(--color-accent)]">{entry.period}</p>
                     <h3 className="mt-2 text-[22px] md:text-[26px]">{entry.organization}</h3>
                     <p className="mt-1 text-[15.5px] font-semibold text-[var(--color-text-secondary)]"><LocalizedText en={entry.role} id={entry.roleId ?? entry.role} /></p>
@@ -54,7 +55,7 @@ export function ExperienceSection() {
                   </div>
 
                   {images.length === 1 && (
-                    <div className="relative min-h-[260px] bg-[var(--color-surface-subtle)] md:min-h-0 md:w-[36%] md:shrink-0">
+                    <div className="relative -mx-5 min-h-[220px] bg-[var(--color-surface-subtle)] sm:mx-0 md:my-8 md:min-h-[300px] md:w-[36%] md:shrink-0">
                       <Image
                         src={images[0].src}
                         alt={images[0].alt}

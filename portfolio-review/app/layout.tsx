@@ -53,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex min-h-full flex-col">
         <SkipLink />
         <Navbar />
-        <main id="main" className="flex-1">
+        <main id="main" className="min-w-0 flex-1">
           {children}
         </main>
         <Footer />

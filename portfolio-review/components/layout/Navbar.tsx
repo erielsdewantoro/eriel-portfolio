@@ -96,15 +96,15 @@ export function Navbar() {
   return (
     <>
     <header
-      className={`sticky top-0 z-50 border-b backdrop-blur-xl transition-[box-shadow,border-color] duration-[var(--duration-base)] ${
-        scrolled ? "border-[var(--color-border-strong)] shadow-[var(--glow)]" : "border-[var(--color-border)]"
+      className={`sticky top-0 z-50 border-b backdrop-blur-md transition-colors duration-[var(--duration-base)] ${
+        scrolled ? "border-[var(--color-border-strong)]" : "border-[var(--color-border)]"
       }`}
       style={{ backgroundColor: "var(--color-nav)" }}
     >
       <div className="container-max flex h-[68px] items-center justify-between gap-4">
         <Link
           href="/"
-          className="focus-ring text-[15px] font-extrabold tracking-[0.14em] text-[var(--color-accent)] [text-shadow:var(--text-glow)] sm:text-[17px]"
+          className="focus-ring text-[15px] font-extrabold tracking-[0.08em] text-[var(--color-text)] sm:text-[17px]"
           onClick={() => setOpen(false)}
         >
           <span className="hidden lg:inline">{site.name.toUpperCase()}.</span>
@@ -126,8 +126,8 @@ export function Navbar() {
                 <LocalizedText en={item.label} id={item.labelId} />
                 <span
                   aria-hidden="true"
-                  className={`absolute -bottom-1.5 left-0 h-[2px] bg-[var(--color-accent)] transition-all duration-[var(--duration-base)] ${
-                    current ? "w-full" : "w-0 group-hover:w-full"
+                  className={`absolute -bottom-1.5 left-0 h-[2px] w-full origin-left bg-[var(--color-accent)] transition-transform duration-[var(--duration-base)] ${
+                    current ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                   }`}
                 />
               </Link>
@@ -178,9 +178,9 @@ export function Navbar() {
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
           >
-            <span className={`h-[3px] w-6 rounded bg-[var(--color-accent)] transition-all duration-200 ${open ? "translate-y-[8px] rotate-45" : ""}`} />
-            <span className={`h-[3px] w-6 rounded bg-[var(--color-accent)] transition-all duration-200 ${open ? "opacity-0" : ""}`} />
-            <span className={`h-[3px] w-6 rounded bg-[var(--color-accent)] transition-all duration-200 ${open ? "-translate-y-[8px] -rotate-45" : ""}`} />
+            <span className={`h-[3px] w-6 rounded bg-[var(--color-accent)] transition-transform duration-200 ${open ? "translate-y-[8px] rotate-45" : ""}`} />
+            <span className={`h-[3px] w-6 rounded bg-[var(--color-accent)] transition-opacity duration-200 ${open ? "opacity-0" : ""}`} />
+            <span className={`h-[3px] w-6 rounded bg-[var(--color-accent)] transition-transform duration-200 ${open ? "-translate-y-[8px] -rotate-45" : ""}`} />
           </button>
         </div>
       </div>

@@ -9,11 +9,12 @@ type Props = {
   children: ReactNode;
   external?: boolean;
   className?: string;
+  download?: string;
 };
 
-export function Button({ href, variant = "primary", children, external, className = "" }: Props) {
+export function Button({ href, variant = "primary", children, external, className = "", download }: Props) {
   const base =
-    "focus-ring inline-flex min-h-[48px] items-center justify-center gap-2 rounded-[var(--radius-sm)] px-6 py-3 text-[15px] font-semibold transition-all duration-[var(--duration-fast)]";
+    "focus-ring inline-flex min-h-[48px] items-center justify-center gap-2 rounded-[var(--radius-sm)] px-6 py-3 text-[15px] font-semibold transition-[transform,background-color,border-color,color,box-shadow] duration-[var(--duration-fast)]";
   const styles =
     variant === "primary"
       ? "bg-[var(--color-accent)] text-[var(--color-on-accent)] hover:-translate-y-0.5 hover:bg-[var(--color-accent-hover)] hover:shadow-[var(--glow)]"
@@ -29,6 +30,14 @@ export function Button({ href, variant = "primary", children, external, classNam
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={`${base} ${styles} ${className}`}>
+        {content}
+      </a>
+    );
+  }
+
+  if (download) {
+    return (
+      <a href={href} download={download} className={`${base} ${styles} ${className}`}>
         {content}
       </a>
     );

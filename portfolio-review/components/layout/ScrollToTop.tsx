@@ -19,7 +19,7 @@ export function ScrollToTop() {
       aria-label="Scroll to top"
       tabIndex={visible ? 0 : -1}
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className={`focus-ring fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-accent)] text-[var(--color-on-accent)] shadow-[var(--glow)] transition-all duration-[var(--duration-base)] hover:-translate-y-1 ${
+      className={`focus-ring fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-accent)] text-[var(--color-on-accent)] shadow-[var(--glow)] transition-[transform,opacity,background-color,box-shadow] duration-[var(--duration-base)] hover:-translate-y-1 ${
         visible ? "opacity-100" : "pointer-events-none translate-y-3 opacity-0"
       }`}
     >

@@ -290,20 +290,12 @@ Jangan memasukkan sertifikat yang sama sekaligus ke `nonFormalEducation` dan
 
 ---
 
-## 7. Mengubah skills dan logo skill
+## 7. Mengubah skills
 
-Edit `content/skills.ts`:
-
-- `skillGroups`: kelompok dan label skill yang tampil dalam daftar.
-- `marqueeSkills`: baris logo skill yang bergerak di atas daftar.
-
-Kalau hanya menambah label skill, tambahkan ke `chips` di kelompok yang cocok.
-Kalau ingin menambah logo, simpan file di `public/images/skills/` dan tambahkan
-objek ke `marqueeSkills`:
-
-```ts
-{ label: "Python", icon: "/images/skills/python.png" },
-```
+Edit `content/skills.ts`. `skillTools` menyimpan tool dan path logo lokal yang
+tampil dalam satu grid. Tambahkan hanya software/teknologi yang memiliki aset
+logo visual, lalu cantumkan nama teknologi yang sama di `techTags` proyek agar
+rujukan proyek dihitung secara akurat.
 
 Project yang memakai skill mencantumkannya di `techTags` dalam
 `content/projects.ts`. Bagian "Used in" dihitung otomatis dari tag tersebut;
@@ -466,3 +458,7 @@ Sebelum menyatakan update selesai, cek:
 - [ ] Preview desktop dan ponsel sudah dilihat.
 - [ ] `npm run lint` dan `npm run build` berhasil.
 - [ ] Setelah push, deployment Vercel selesai dan situs live sudah diperiksa.
+
+## CV downloads
+
+The English and Indonesian CV PDFs are served from public/cv/ and linked from the About section. Keep the filenames cv-eriel-en.pdf and cv-eriel-id.pdf stable, or update the download links in components/home/AboutSection.tsx.

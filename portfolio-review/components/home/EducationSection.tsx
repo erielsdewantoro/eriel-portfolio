@@ -8,7 +8,7 @@ import { LocalizedText } from "@/components/ui/LocalizedText";
 export function EducationSection() {
   const logo = existingAssetOrUndefined(education.logo);
   return (
-    <section id="education" className="section-space scroll-mt-20">
+    <section id="education" className="education-section section-space scroll-mt-20">
       <div className="container-max">
         <h2 className="section-title"><LocalizedText en="Education" id="Pendidikan Formal" /></h2>
         <Reveal>
@@ -38,7 +38,7 @@ export function EducationSection() {
             const image = existingAssetOrUndefined(program.image);
             return (
               <Reveal key={program.title} delay={i * 80} className="h-full">
-                <article className="card card-hover flex h-full flex-col overflow-hidden">
+              <article className="credential-card card card-hover flex h-full flex-col overflow-hidden">
                   {image && (
                     <div className="relative aspect-[4/3] border-b border-[var(--color-border)] bg-[var(--color-surface-subtle)] p-3">
                       <Image
@@ -84,7 +84,7 @@ export function EducationSection() {
             const image = existingAssetOrUndefined(cred.image);
             return (
               <Reveal key={cred.title} delay={i * 80} className="h-full">
-                <article className="card card-hover flex h-full flex-col overflow-hidden">
+              <article className="credential-card card card-hover flex h-full flex-col overflow-hidden">
                   {image && (
                     <div className="relative aspect-[4/3] border-b border-[var(--color-border)] bg-[var(--color-surface-subtle)] p-3">
                       <Image

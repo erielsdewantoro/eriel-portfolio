@@ -1,91 +1,79 @@
 import Image from "next/image";
 import Link from "next/link";
-import { marqueeSkills, skillGroups } from "@/content/skills";
-import { Chip } from "@/components/ui/Chip";
+import { skillTools } from "@/content/skills";
 import { Reveal } from "@/components/ui/Reveal";
 import { projectsUsingSkill } from "@/lib/skillEvidence";
 import { LocalizedText } from "@/components/ui/LocalizedText";
 import { projectTranslationsId } from "@/content/project-translations";
 
-function MarqueeSet({ duplicate = false }: { duplicate?: boolean }) {
+function SkillMarqueeRow({ skills, slower = false }: { skills: typeof skillTools; slower?: boolean }) {
   return (
-    <ul
-      className="flex shrink-0 gap-[18px] pr-[18px]"
-      {...(duplicate ? { "aria-hidden": true, "data-dup": true } : { "aria-label": "Tools and technologies" })}
-    >
-      {marqueeSkills.map((s) => (
-        <li
-          key={s.label}
-          className="card flex min-w-[190px] items-center gap-3 px-5 py-3.5 !shadow-none"
-        >
-          {/* Light tile keeps dark logos (GitHub, Pandas) readable in both themes */}
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[10px] bg-[var(--color-icon-tile)]">
-            <Image src={s.icon} alt="" width={28} height={28} className="h-7 w-7 object-contain" />
-          </span>
-          <span className="leading-tight">
-            <span className="block text-[15px] font-semibold">{s.label}</span>
-            {s.note && <span className="block text-[11.5px] text-[var(--color-text-muted)]"><LocalizedText en={s.note} id={s.noteId ?? s.note} /></span>}
-          </span>
-        </li>
-      ))}
-    </ul>
+    <div className="skill-marquee-window">
+      <div className={`skill-marquee-track${slower ? " skill-marquee-track-slower" : ""}`}>
+        {[false, true].map((duplicate) => (
+          <ul key={String(duplicate)} className="skill-marquee-set" aria-hidden={duplicate || undefined}>
+            {skills.map((skill) => (
+              <li key={skill.label} className="skill-marquee-item">
+                <span className="skill-marquee-logo">
+                  <Image src={skill.icon} alt="" aria-hidden="true" width={40} height={40} className="h-8 w-8 object-contain" />
+                </span>
+                <span>{skill.label}</span>
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
   );
 }
 
 export function SkillsSection() {
+  const projectEvidence = skillTools
+    .map((skill) => ({ skill, projects: projectsUsingSkill(skill.label) }))
+    .filter((entry) => entry.projects.length > 0);
+
   return (
     <section id="skills" className="section-space scroll-mt-20">
       <div className="container-max">
-        <h2 className="section-title"><LocalizedText en="Skills" id="Keahlian" /></h2>
+        <div className="mb-8 max-w-[760px]">
+          <p className="eyebrow mb-2"><LocalizedText en="Capabilities" id="Kapabilitas" /></p>
+          <h2 className="section-title !mb-3"><LocalizedText en="Skills & Tools" id="Keahlian & Perangkat" /></h2>
+          <p className="text-[15px] leading-[1.7] text-[var(--color-text-secondary)]">
+            <LocalizedText en="A concise set of tools used across analytics, business intelligence, development, and design." id="Perangkat kerja utama untuk analitik, business intelligence, pengembangan, dan desain." />
+          </p>
+        </div>
 
-        <div className="marquee mb-12" role="region" aria-label="Tools and technologies / Alat dan teknologi">
-          <div className="marquee-track">
-            <MarqueeSet />
-            <MarqueeSet duplicate />
+        <Reveal>
+          <div className="skills-marquee" role="region" aria-label="Skills and tools / Keahlian dan perangkat">
+            <SkillMarqueeRow skills={skillTools.slice(0, 7)} />
+            <SkillMarqueeRow skills={skillTools.slice(7)} slower />
           </div>
-        </div>
+        </Reveal>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {skillGroups.map((group, gi) => {
-            // Evidence is computed per chip from actual project techTags —
-            // never a blanket group-level claim.
-            const evidenced = group.chips
-              .map((chip) => ({ chip, matches: projectsUsingSkill(chip.label) }))
-              .filter((e) => e.matches.length > 0);
-
-            return (
-              <Reveal key={group.title} delay={(gi % 2) * 80}>
-                <div className="card h-full p-6">
-                  <h3 className="mb-2 text-[18px] text-[var(--color-accent)]"><LocalizedText en={group.title} id={group.titleId} /></h3>
-                  <p className="mb-4 text-[13px] text-[var(--color-text-muted)]"><LocalizedText en={group.description} id={group.descriptionId} /></p>
-                  <div className="flex flex-wrap gap-2">
-                    {group.chips.map((chip) => (
-                      <Chip key={chip.label} label={chip.label} note={chip.note} noteId={chip.noteId} />
+        {projectEvidence.length > 0 && (
+          <Reveal>
+            <section className="skills-proof-block mt-8 border-t border-[var(--color-border)] pt-6" aria-labelledby="skills-projects-title">
+              <h3 id="skills-projects-title" className="mb-4 text-[16px] font-semibold">
+                <LocalizedText en="Project references" id="Rujukan proyek" />
+              </h3>
+              <ul className="grid gap-x-8 gap-y-3 sm:grid-cols-2">
+                {projectEvidence.map(({ skill, projects }) => (
+                  <li key={skill.label} className="text-[13px] leading-[1.65] text-[var(--color-text-muted)]">
+                    <span className="font-semibold text-[var(--color-text-secondary)]">{skill.label}:</span>{" "}
+                    {projects.map((project, index) => (
+                      <span key={project.slug}>
+                        {index > 0 && ", "}
+                        <Link href={`/projects/${project.slug}`} className="proof-link focus-ring">
+                          <LocalizedText en={project.title} id={projectTranslationsId[project.slug]?.title ?? project.title} />
+                        </Link>
+                      </span>
                     ))}
-                  </div>
-                  {evidenced.length > 0 && (
-                    <p className="mt-4 text-[13px] leading-[1.7] text-[var(--color-text-muted)]">
-                      {evidenced.map((e, i) => (
-                        <span key={e.chip.label}>
-                          {i > 0 && " · "}
-                          {e.chip.label}:{" "}<LocalizedText en="Used in " id="Digunakan pada " />
-                          {e.matches.map((m, j) => (
-                            <span key={m.slug}>
-                              {j > 0 && ", "}
-                              <Link href={`/projects/${m.slug}`} className="focus-ring underline hover:text-[var(--color-accent)]">
-                                <LocalizedText en={m.title} id={projectTranslationsId[m.slug]?.title ?? m.title} />
-                              </Link>
-                            </span>
-                          ))}
-                        </span>
-                      ))}
-                    </p>
-                  )}
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </Reveal>
+        )}
       </div>
     </section>
   );

@@ -14,7 +14,6 @@ export function CaseStudyHero({ project }: { project: Project }) {
   const idCopy = projectTranslationsId[project.slug];
   return (
     <header className="relative overflow-hidden border-b border-[var(--color-border)] pb-12 pt-10 md:pb-16 md:pt-14">
-      <div aria-hidden="true" className="hero-blob -right-16 -top-10 h-64 w-64 bg-[var(--color-accent)]" />
       <div className="container-max relative">
         <Link
           href="/projects"
@@ -28,7 +27,7 @@ export function CaseStudyHero({ project }: { project: Project }) {
             <Chip key={c} label={CATEGORY_LABELS[c]} labelId={CATEGORY_LABELS_ID[c]} />
           ))}
         </div>
-        <h1 className="gradient-text max-w-[900px] text-[32px] font-extrabold leading-[1.12] md:text-[48px]">
+        <h1 className="max-w-[900px] text-[32px] font-extrabold leading-[1.12] md:text-[48px]">
           <LocalizedText en={project.title} id={idCopy?.title ?? project.title} />
         </h1>
         <p className="reading mt-4 text-[17.5px] leading-[1.7] text-[var(--color-text-secondary)]">
