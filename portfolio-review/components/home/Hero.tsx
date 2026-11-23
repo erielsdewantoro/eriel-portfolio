@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { site } from "@/content/site";
 import { Button } from "@/components/ui/Button";
-import { ArrowIcon, GitHubIcon, LinkedInIcon, WhatsAppIcon } from "@/components/ui/Icons";
+import { ArrowIcon, DownloadIcon, GitHubIcon, LinkedInIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { Reveal } from "@/components/ui/Reveal";
 import { LocalizedText } from "@/components/ui/LocalizedText";
 
@@ -35,6 +35,20 @@ export function Hero() {
               <Button href={site.secondaryCta.href} variant="outline">
                 <LocalizedText en={site.secondaryCta.label} id={site.secondaryCta.labelId} />
               </Button>
+              <LocalizedText
+                en={(
+                  <Button href="/cv/cv-eriel-en.pdf" download="Eriel-Setiawan-Dewantoro-CV-English.pdf" variant="outline">
+                    <DownloadIcon size={16} />
+                    Download CV
+                  </Button>
+                )}
+                id={(
+                  <Button href="/cv/cv-eriel-id.pdf" download="Eriel-Setiawan-Dewantoro-CV-Bahasa-Indonesia.pdf" variant="outline">
+                    <DownloadIcon size={16} />
+                    Unduh CV
+                  </Button>
+                )}
+              />
               <div className="flex items-center">
                 <a
                   href={site.social.github}

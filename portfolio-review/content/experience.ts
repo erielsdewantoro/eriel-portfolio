@@ -3,6 +3,7 @@ export type ExperienceEntry = {
   role: string;
   roleId?: string;
   period: string;
+  periodId?: string;
   bullets: string[];
   bulletsId?: string[];
   /** Photos under /public. One photo stays as a single feature image; multiple photos become a gallery. */
@@ -20,7 +21,8 @@ export const experience: ExperienceEntry[] = [
     organization: "Tennis Circle Jakarta",
     role: "Community Operations & Member Relations",
     roleId: "Operasional Komunitas & Hubungan Anggota",
-    period: "Jul 2024 – Nov 2025 · Mar – Aug 2026",
+    period: "July 2024 - August 2026",
+    periodId: "Juli 2024 - Agustus 2026",
     images: [
       {
         src: "/images/experience/tennis-circle.jpeg",

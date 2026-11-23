@@ -4,8 +4,8 @@ export const education = {
   institution: "Universitas Bina Sarana Informatika (UBSI)",
   degree: "Bachelor of Information Technology (S1 Teknologi Informasi)",
   degreeId: "Sarjana Teknologi Informasi (S1)",
-  status: "Graduated September 2026 · GPA 3.70/4.00",
-  statusId: "Lulus September 2026 · IPK 3,70/4,00",
+  status: "Graduated September 2026 · GPA 3.84/4.00",
+  statusId: "Lulus September 2026 · IPK 3,84/4,00",
   relevantCoursework:
     "Relevant coursework: Database, Operating Systems, Statistics, Machine Learning, and Data Analysis.",
   relevantCourseworkId:

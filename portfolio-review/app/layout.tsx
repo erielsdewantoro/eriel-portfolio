@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description:
-    "Portfolio of Eriel Setiawan Dewantoro, an Information Technology graduate with a 3.70/4.00 GPA and experience in data analytics, business intelligence, community operations, public relations, and IT support.",
+    "Portfolio of Eriel Setiawan Dewantoro, an Information Technology graduate with a 3.84/4.00 GPA and experience in data analytics, business intelligence, community operations, public relations, and IT support.",
   openGraph: {
     title: `${site.name} — Information Technology Graduate`,
     description:

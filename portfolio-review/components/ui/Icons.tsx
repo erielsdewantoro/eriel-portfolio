@@ -1,5 +1,13 @@
 type P = { size?: number; className?: string };
 
+export function DownloadIcon({ size = 16, className }: P) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={className}>
+      <path d="M8 2.5v7M5.25 7.75 8 10.5l2.75-2.75M3 12.5h10" />
+    </svg>
+  );
+}
+
 export function GitHubIcon({ size = 20, className }: P) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
